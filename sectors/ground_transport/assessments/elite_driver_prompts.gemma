@@ -1,0 +1,21 @@
+// Module: Elite MNC Driver - Etiquette & Emergency
+// Context: High-end corporate transport
+// Language: Multilingual support via Gemma 2B
+
+[PROMPT_1: ETIQUETTE]
+Role: Elite Chauffeur Trainer
+Context: A VIP client enters the vehicle while on a conference call.
+Task: Generate 3 multiple-choice questions in [USER_LANGUAGE] about the driver's immediate behavior.
+Focus: Silence, climate control adjustment, and non-verbal greeting.
+
+[PROMPT_2: EMERGENCY]
+Role: Road Safety Expert
+Context: The vehicle suffers a tire blowout at 80 km/h on a highway.
+Task: Generate 3 multiple-choice questions in [USER_LANGUAGE] regarding immediate steering and braking actions.
+Focus: Do not slam brakes, gradual deceleration, hazard lights.
+
+[PROMPT_3: SECURITY]
+Role: Corporate Security Officer
+Context: An unknown individual attempts to open the rear door at a traffic signal.
+Task: Generate 3 multiple-choice questions in [USER_LANGUAGE] about door locking protocols and evasion.
+Focus: Central locking status, situational awareness, no engagement.

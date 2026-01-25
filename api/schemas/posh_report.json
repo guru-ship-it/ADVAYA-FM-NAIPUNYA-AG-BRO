@@ -1,0 +1,65 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "POSH Zero-Reprisal Report",
+    "description": "Schema for encrypted POSH reports that bypass local managers.",
+    "type": "object",
+    "properties": {
+        "report_type": {
+            "type": "string",
+            "const": "ZERO_REPRISAL_INCIDENT"
+        },
+        "security_level": {
+            "type": "string",
+            "const": "RESTRICTED_ICC_ONLY"
+        },
+        "protection_flag": {
+            "type": "string",
+            "const": "ACTIVE_WHISTLEBLOWER_STATUS"
+        },
+        "worker_meta": {
+            "type": "object",
+            "properties": {
+                "sector": {
+                    "type": "string"
+                },
+                "region": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "sector",
+                "region"
+            ]
+        },
+        "incident_data": {
+            "type": "object",
+            "properties": {
+                "timestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "description_encrypted": {
+                    "type": "string",
+                    "description": "AES256 Encrypted Blob"
+                },
+                "evidence_links": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "timestamp",
+                "description_encrypted"
+            ]
+        }
+    },
+    "required": [
+        "report_type",
+        "security_level",
+        "protection_flag",
+        "worker_meta",
+        "incident_data"
+    ]
+}

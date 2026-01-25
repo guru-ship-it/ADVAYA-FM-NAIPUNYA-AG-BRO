@@ -1,0 +1,21 @@
+{
+    "request_id": "VN-2026-X99",
+    "worker_id": "DRV_7582",
+    "sector": "Ground_Transport",
+    "phase": 1,
+    "compliance_status": {
+        "is_eligible": true,
+        "last_check": "2026-01-26T12:00:00Z",
+        "modules_completed": [
+            "DEFENSIVE_DRIVING_V1",
+            "EMERGENCY_RESPONSE"
+        ],
+        "gatekeeper_verified": "WATCH_TIME_98_PERCENT"
+    },
+    "assessment_score": {
+        "gemma_offline_quiz": 92,
+        "language": "Tamil",
+        "confidence_level": "High"
+    },
+    "integration_token": "TOKEN_FOR_MNC_LMS"
+}

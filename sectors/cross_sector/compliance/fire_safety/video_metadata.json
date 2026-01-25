@@ -1,0 +1,9 @@
+{
+    "moduleId": "FIRE_SAFETY_001",
+    "title": "Cross-Sector Fire Safety & Emergency Response",
+    "videoUrl": "https://youtu.be/EXAMPLE_ID",
+    "duration": "7:00",
+    "requiredWatchRatio": 0.95,
+    "isMandatory": true,
+    "assessmentId": "assessment_v1.gemma"
+}

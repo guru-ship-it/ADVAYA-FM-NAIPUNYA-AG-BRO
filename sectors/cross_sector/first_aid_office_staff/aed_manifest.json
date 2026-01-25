@@ -1,0 +1,9 @@
+{
+    "device": "Automated_External_Defibrillator",
+    "monthly_audit": {
+        "visual_check": "Ready_Light_Green",
+        "pad_expiry": "Verify_Date",
+        "dust_clearance": "Mandatory"
+    },
+    "user_empowerment": "Machine_Voice_Guided_Safe_to_Use"
+}

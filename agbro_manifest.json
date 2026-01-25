@@ -1,0 +1,14 @@
+{
+    "project": "Advaya_FM_Elite",
+    "tier": "MNC_Platinum",
+    "drive": "D:",
+    "account": "Workspace",
+    "status": "Initialized",
+    "app_name": "FM_NaipuNya",
+    "distribution": "Google_Play_Store",
+    "interface_roles": {
+        "blue_collar": "Mobile_Only",
+        "white_collar": "Web_and_Mobile"
+    },
+    "deployment": "GCP_Wednesday_Cycle"
+}

@@ -1,0 +1,9 @@
+{
+    "protocol": "Zero-Reprisal-Bypass",
+    "routing": "Direct_to_ICC_Chairperson",
+    "anonymity": "Sovereign_Token_Encryption",
+    "reprisal_protection": {
+        "status": "Mandatory_MNC_Escalation",
+        "bypass_supervisor": true
+    }
+}
