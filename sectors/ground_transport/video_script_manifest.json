@@ -1,0 +1,90 @@
+[
+    {
+        "module": 1,
+        "title": "The Professional Partner",
+        "persona": "Pragati",
+        "opening_line": "Aapki pehchaan aapke kaam se hai. Let's build the Elite standard together.",
+        "veo_prompt": "Cinematic sunlight hitting a clean transport vehicle; driver adjusting collar in rearview mirror. Style: Photorealistic, cinematic lighting, Indian corporate context.",
+        "voice_config": {
+            "locale": "hi-IN",
+            "model": "hi-IN-Wavenet-D"
+        }
+    },
+    {
+        "module": 2,
+        "title": "Digital Navigations",
+        "persona": "Pragati",
+        "opening_line": "Technology is your best friend on the road. Let’s master the Gulgul tools.",
+        "veo_prompt": "Macro shot of a smartphone screen showing a smooth route map; finger tapping with precision. Style: High-tech, clean UI focus.",
+        "voice_config": {
+            "locale": "en-IN",
+            "model": "en-IN-Wavenet-D"
+        }
+    },
+    {
+        "module": 3,
+        "title": "POSH: The Elite Guard",
+        "persona": "Pragati",
+        "opening_line": "Respect is non-negotiable. At Advaya, we protect everyone’s dignity.",
+        "veo_prompt": "CCTV style footage of a well-lit office hallway; security intervention transition. Style: Security cam aesthetics, professional deterrence.",
+        "voice_config": {
+            "locale": "hi-IN",
+            "model": "hi-IN-Wavenet-D"
+        }
+    },
+    {
+        "module": 4,
+        "title": "The Vajra Inspection",
+        "persona": "Pragati",
+        "opening_line": "Your machine is your livelihood. Keep it sharp, keep it safe.",
+        "veo_prompt": "Detailed mechanical check of brake pads and fluid levels; high-contrast metallic textures. Style: Macro, industrial, high-fidelity.",
+        "voice_config": {
+            "locale": "hi-IN",
+            "model": "hi-IN-Wavenet-D"
+        }
+    },
+    {
+        "module": 5,
+        "title": "Defensive Driving",
+        "persona": "Pragati",
+        "opening_line": "The road is full of surprises. Be the one who is always prepared.",
+        "veo_prompt": "POV van driving through narrow lane; sudden hazard (child/van) appearing; smooth avoidance. Style: POV, action-oriented, emergency braking motion.",
+        "voice_config": {
+            "locale": "en-IN",
+            "model": "en-IN-Wavenet-D"
+        }
+    },
+    {
+        "module": 6,
+        "title": "City Mastery",
+        "persona": "Pragati",
+        "opening_line": "Bangalore traffic is a test of patience. Let’s pass it every day.",
+        "veo_prompt": "Time-lapse of heavy city traffic merging into lanes; focus on mirror signaling; heavy rain effects. Style: Time-lapse, 360-degree mirror check sequence.",
+        "voice_config": {
+            "locale": "en-IN",
+            "model": "en-IN-Wavenet-D"
+        }
+    },
+    {
+        "module": 7,
+        "title": "Tactical Night Safety",
+        "persona": "Pragati",
+        "opening_line": "When the sun goes down, your focus must go up.",
+        "veo_prompt": "Nighttime driving; headlights reflecting on wet pavement; dashboard glow; high-glare oncoming traffic. Style: Low-light, high-glare, hydroplaning recovery motion.",
+        "voice_config": {
+            "locale": "en-IN",
+            "model": "en-IN-Wavenet-D"
+        }
+    },
+    {
+        "module": 8,
+        "title": "Emergency Response",
+        "persona": "Pragati",
+        "opening_line": "In a crisis, you are the leader. Here is how you take charge.",
+        "veo_prompt": "Slow motion deployment of a fire extinguisher; driver guiding passengers to safety; cinematic roadside scene. Style: Slow-motion, heroic, dramatic lighting.",
+        "voice_config": {
+            "locale": "hi-IN",
+            "model": "hi-IN-Wavenet-D"
+        }
+    }
+]

@@ -4,14 +4,14 @@
     "modules": [
         {
             "id": "M1",
-            "title": "Foundations: Spirit of Service",
+            "title": "The Professional Partner",
             "type": "theory",
             "prerequisites": [],
             "min_watch_time_s": 10
         },
         {
             "id": "M2",
-            "title": "Grooming & Hygiene Standards",
+            "title": "Digital Navigations",
             "type": "theory",
             "prerequisites": [
                 "M1"
@@ -20,7 +20,7 @@
         },
         {
             "id": "M3",
-            "title": "Professional Etiquette",
+            "title": "POSH: The Elite Guard",
             "type": "theory",
             "prerequisites": [
                 "M2"
@@ -29,7 +29,7 @@
         },
         {
             "id": "M4",
-            "title": "POSH: Zero-Reprisal Policy",
+            "title": "The Vajra Inspection",
             "type": "theory",
             "prerequisites": [
                 "M3"
@@ -38,7 +38,7 @@
         },
         {
             "id": "M5",
-            "title": "Defensive Driving & Hazard Perception",
+            "title": "Defensive Driving",
             "type": "interactive_xr",
             "prerequisites": [
                 "M4"
@@ -51,7 +51,7 @@
         },
         {
             "id": "M6",
-            "title": "Intermediate Driving: City Mastery",
+            "title": "City Mastery",
             "type": "theory",
             "prerequisites": [
                 "M5"
@@ -60,7 +60,7 @@
         },
         {
             "id": "M7",
-            "title": "Advanced Driving: Adverse Conditions",
+            "title": "Tactical Night Safety",
             "type": "theory",
             "prerequisites": [
                 "M6"
@@ -69,7 +69,7 @@
         },
         {
             "id": "M8",
-            "title": "First Responder Protocols",
+            "title": "Emergency Response",
             "type": "theory",
             "prerequisites": [
                 "M7"

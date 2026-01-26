@@ -38,14 +38,14 @@ The **Advaya FM Elite Broadcom Pilot** integrates cutting‑edge AI models, a pr
 
 | Module | Document |
 |--------|----------|
-| 1 – Foundations | [module_1_foundations.md](file:///d:/ADVAYA_FM_ELITE/sectors/ground_transport/training_modules/docs/module_1_foundations.md) |
-| 2 – Defensive Driving | [module_2_defensive.md](file:///d:/ADVAYA_FM_ELITE/sectors/ground_transport/training_modules/docs/module_2_defensive.md) |
-| 3 – Advanced Maneuvers | [module_3_advanced.md](file:///d:/ADVAYA_FM_ELITE/sectors/ground_transport/training_modules/docs/module_3_advanced.md) |
-| 4 – POSH (Zero‑Reprisal) | [module_4_posh.md](file:///d:/ADVAYA_FM_ELITE/sectors/ground_transport/training_modules/docs/module_4_posh.md) |
-| 5 – Hazard Test Engine | [module_5_hazard.md](file:///d:/ADVAYA_FM_ELITE/sectors/ground_transport/training_modules/docs/module_5_hazard.md) |
-| 6 – First Responder | [module_6_first_responder.md](file:///d:/ADVAYA_FM_ELITE/sectors/ground_transport/training_modules/docs/module_6_first_responder.md) |
-| 7 – ... | [module_7.md](file:///d:/ADVAYA_FM_ELITE/sectors/ground_transport/training_modules/docs/module_7.md) |
-| 8 – ... | [module_8.md](file:///d:/ADVAYA_FM_ELITE/sectors/ground_transport/training_modules/docs/module_8.md) |
+| 1 – The Professional Partner | [module_1_foundations.md](file:///d:/ADVAYA_FM_ELITE/sectors/ground_transport/training_modules/docs/module_1_foundations.md) |
+| 2 – Digital Navigations | [module_2_grooming.md](file:///d:/ADVAYA_FM_ELITE/sectors/ground_transport/training_modules/docs/module_2_grooming.md) |
+| 3 – POSH: The Elite Guard | [module_3_etiquette.md](file:///d:/ADVAYA_FM_ELITE/sectors/ground_transport/training_modules/docs/module_3_etiquette.md) |
+| 4 – The Vajra Inspection | [module_4_posh.md](file:///d:/ADVAYA_FM_ELITE/sectors/ground_transport/training_modules/docs/module_4_posh.md) |
+| 5 – Defensive Driving | [module_5_hazard.md](file:///d:/ADVAYA_FM_ELITE/sectors/ground_transport/training_modules/docs/module_5_hazard.md) |
+| 6 – City Mastery | [module_6_first_responder.md](file:///d:/ADVAYA_FM_ELITE/sectors/ground_transport/training_modules/docs/module_6_first_responder.md) |
+| 7 – Tactical Night Safety | [module_7.md](file:///d:/ADVAYA_FM_ELITE/sectors/ground_transport/training_modules/docs/module_7.md) |
+| 8 – Emergency Response | [module_8.md](file:///d:/ADVAYA_FM_ELITE/sectors/ground_transport/training_modules/docs/module_8.md) |
 
 ## Course Progression & Navigator
 
