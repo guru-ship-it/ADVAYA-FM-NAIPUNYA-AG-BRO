@@ -22,7 +22,8 @@ class HazardTestEngine:
         else:
             self.hazards = []
             self.pass_criteria = {"min_score": 80, "max_avg_latency": 1300}
-            print("⚠️ Warning: No manifesto found. Simulation empty.")
+            print("[WARN] Warning: No manifesto found. Simulation empty.")
+            # No Unicode icons used to avoid encoding errors
 
     def _load_json(self, filename):
         try:
@@ -62,7 +63,7 @@ class HazardTestEngine:
             threshold_ms = hazard['reaction_threshold_ms']
             
             is_success = reaction_ms <= threshold_ms
-            status_icon = "✅" if is_success else "❌"
+            status_icon = "[PASS]" if is_success else "[FAIL]"
             
             print(f"{status_icon} Reaction: {reaction_ms}ms (Threshold: {threshold_ms}ms)")
             
