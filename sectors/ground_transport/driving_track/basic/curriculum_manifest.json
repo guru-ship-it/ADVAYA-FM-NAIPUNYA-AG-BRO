@@ -1,0 +1,28 @@
+{
+    "module_id": "DD_BASIC_v1",
+    "title": "Defensive Driving: The Foundation",
+    "alignment": "MoRTH_2026_Standard",
+    "mandatory_duration_minutes": 45,
+    "topics": [
+        {
+            "id": "DD_01_VEHICLE_CONTROL",
+            "name": "Pre-Trip Inspection (Vajra Check)",
+            "format": "Interactive_3D_Walkaround"
+        },
+        {
+            "id": "DD_02_ROAD_SIGNS",
+            "name": "The Language of the Road",
+            "content": "Mandatory / Cautionary / Informatory Signs",
+            "quiz_threshold": "100_PERCENT"
+        },
+        {
+            "id": "DD_03_HAZARD_PERCEPTION",
+            "name": "The 3-Second Rule",
+            "format": "Video_Reaction_Test"
+        }
+    ],
+    "certification": {
+        "badge": "Vajra_Pilot_Bronze",
+        "validity_months": 12
+    }
+}

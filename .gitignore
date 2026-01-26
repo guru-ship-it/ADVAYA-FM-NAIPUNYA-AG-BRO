@@ -1,0 +1,7 @@
+service_account.json
+__pycache__/
+*.pyc
+.env
+.DS_Store
+node_modules/
+.conductor/secrets/
