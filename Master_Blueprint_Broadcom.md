@@ -47,6 +47,18 @@ The **Advaya FM Elite Broadcom Pilot** integrates cutting‑edge AI models, a pr
 | 7 – Tactical Night Safety | [module_7.md](file:///d:/ADVAYA_FM_ELITE/sectors/ground_transport/training_modules/docs/module_7.md) |
 | 8 – Emergency Response | [module_8.md](file:///d:/ADVAYA_FM_ELITE/sectors/ground_transport/training_modules/docs/module_8.md) |
 
+## YAAD Anomaly Detection (Vajra Shield)
+
+- **Technical Doc**: `.conductor/yaad_alertness_logic.md` – Mathematical logic for alertness variance.
+- **Alertness Score ($S_{ea}$)**: Set at **0.85 Threshold**. Triggers Didi interventions if score drops below 0.7.
+- **Interventions**: Localized Gemma 4B feedback for gaze drift, liveness failure, and environmental issues.
+
+## Mass Production Matrix (8 Modules)
+
+- **Manifest**: `sectors/ground_transport/video_script_manifest.json` – Master production matrix for Vertex AI + Veo 3.1.
+- **Logic**: Each module (1-8) is capped at 15 minutes with **3 scheduled Vajra Liveness checks** at 04:00, 08:00, and 12:00.
+- **Localized Content**: `sectors/ground_transport/training_modules/docs/full_module_dialogues.json` – Full Hinglish scripts for Pragati "Didi" persona.
+
 ## Course Progression & Navigator
 
 - **Course Manifest**: `sectors/ground_transport/course_manifest.json` – Defines prerequisites and session types for all 8 modules.

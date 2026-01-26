@@ -99,19 +99,29 @@ class HazardTestEngine:
         print(f"Score: {score:.1f}% (Required: {self.pass_criteria['min_score']}%)")
         print(f"Avg Latency: {int(avg_latency)}ms (Max Allowed: {self.pass_criteria['max_avg_latency']}ms)")
         
+        # Vajra Action Scoring Tiers
+        if avg_latency < 1000:
+            tier = "Elite (Vajra Eye)"
+        elif 1000 <= avg_latency < 2000:
+            tier = "Professional"
+        elif 2000 <= avg_latency < 3000:
+            tier = "Safe"
+        else:
+            tier = "Danger"
+
         pass_score = score >= self.pass_criteria['min_score']
         pass_latency = avg_latency <= self.pass_criteria['max_avg_latency']
         
         if pass_score and pass_latency:
-            status = "PASSED (Distinction)"
+            status = f"PASSED - Tier: {tier}"
         else:
-            status = "FAILED"
+            status = f"FAILED - Tier: {tier}"
             if not pass_score: print("Reason: Score too low.")
             if not pass_latency: print("Reason: Reaction too slow.")
 
         print(f"Final Status: {status}")
         
-        if status == "FAILED":
+        if tier == "Danger" or status == "FAILED":
             print("Action: Mandatory Retake of Module 5 Video.")
 
 if __name__ == "__main__":
