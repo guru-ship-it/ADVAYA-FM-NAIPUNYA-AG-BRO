@@ -1,28 +1,23 @@
 {
-    "module_id": "DD_BASIC_v1",
-    "title": "Defensive Driving: The Foundation",
-    "alignment": "MoRTH_2026_Standard",
-    "mandatory_duration_minutes": 45,
-    "topics": [
+    "module_id": "m5_ground_transport_basic",
+    "track_name": "Broadcom Pilot - Level 1",
+    "persona_tone": "Didi_Supportive",
+    "hazards": [
         {
-            "id": "DD_01_VEHICLE_CONTROL",
-            "name": "Pre-Trip Inspection (Vajra Check)",
-            "format": "Interactive_3D_Walkaround"
+            "timestamp": "00:12",
+            "type": "pedestrian_child",
+            "severity": "high",
+            "reaction_threshold_ms": 1500
         },
         {
-            "id": "DD_02_ROAD_SIGNS",
-            "name": "The Language of the Road",
-            "content": "Mandatory / Cautionary / Informatory Signs",
-            "quiz_threshold": "100_PERCENT"
-        },
-        {
-            "id": "DD_03_HAZARD_PERCEPTION",
-            "name": "The 3-Second Rule",
-            "format": "Video_Reaction_Test"
+            "timestamp": "00:45",
+            "type": "blind_spot_cyclist",
+            "severity": "medium",
+            "reaction_threshold_ms": 1200
         }
     ],
-    "certification": {
-        "badge": "Vajra_Pilot_Bronze",
-        "validity_months": 12
+    "pass_criteria": {
+        "min_score": 80,
+        "max_avg_latency": 1300
     }
 }
