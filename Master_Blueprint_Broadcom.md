@@ -47,6 +47,17 @@ The **Advaya FM Elite Broadcom Pilot** integrates cutting‑edge AI models, a pr
 | 7 – ... | [module_7.md](file:///d:/ADVAYA_FM_ELITE/sectors/ground_transport/training_modules/docs/module_7.md) |
 | 8 – ... | [module_8.md](file:///d:/ADVAYA_FM_ELITE/sectors/ground_transport/training_modules/docs/module_8.md) |
 
+## Course Progression & Navigator
+
+- **Course Manifest**: `sectors/ground_transport/course_manifest.json` – Defines prerequisites and session types for all 8 modules.
+- **Course Navigator**: `sectors/ground_transport/course_navigator.py` – Manages the "Vajra Path" state machine, handles liveness interrupts, and launches module sessions.
+
+## WebXR Immersive Training
+
+- **Technology**: A‑Frame (Mobile‑First WebXR).
+- **Prototype**: `sectors/ground_transport/driving_track/basic/hazard_simulation_xr.html`.
+- **Logic**: Raycaster‑based hazard tagging with Pragati's spatially aware "Didi" cues.
+
 ## Hazard Test Engine Enhancements
 
 - Welcome script (`pragati_welcome.json`) loaded before each test.

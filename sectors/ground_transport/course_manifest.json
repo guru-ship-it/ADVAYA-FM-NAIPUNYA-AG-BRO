@@ -1,0 +1,80 @@
+{
+    "project_name": "Advaya FM Elite Broadcom Pilot",
+    "total_modules": 8,
+    "modules": [
+        {
+            "id": "M1",
+            "title": "Foundations: Spirit of Service",
+            "type": "theory",
+            "prerequisites": [],
+            "min_watch_time_s": 10
+        },
+        {
+            "id": "M2",
+            "title": "Grooming & Hygiene Standards",
+            "type": "theory",
+            "prerequisites": [
+                "M1"
+            ],
+            "min_watch_time_s": 10
+        },
+        {
+            "id": "M3",
+            "title": "Professional Etiquette",
+            "type": "theory",
+            "prerequisites": [
+                "M2"
+            ],
+            "min_watch_time_s": 10
+        },
+        {
+            "id": "M4",
+            "title": "POSH: Zero-Reprisal Policy",
+            "type": "theory",
+            "prerequisites": [
+                "M3"
+            ],
+            "min_watch_time_s": 10
+        },
+        {
+            "id": "M5",
+            "title": "Defensive Driving & Hazard Perception",
+            "type": "interactive_xr",
+            "prerequisites": [
+                "M4"
+            ],
+            "xr_scene": "hazard_simulation_xr.html",
+            "pass_criteria": {
+                "min_score": 80,
+                "max_avg_latency_ms": 1300
+            }
+        },
+        {
+            "id": "M6",
+            "title": "Intermediate Driving: City Mastery",
+            "type": "theory",
+            "prerequisites": [
+                "M5"
+            ],
+            "min_watch_time_s": 10
+        },
+        {
+            "id": "M7",
+            "title": "Advanced Driving: Adverse Conditions",
+            "type": "theory",
+            "prerequisites": [
+                "M6"
+            ],
+            "min_watch_time_s": 10
+        },
+        {
+            "id": "M8",
+            "title": "First Responder Protocols",
+            "type": "theory",
+            "prerequisites": [
+                "M7"
+            ],
+            "min_watch_time_s": 10
+        }
+    ]
+}
