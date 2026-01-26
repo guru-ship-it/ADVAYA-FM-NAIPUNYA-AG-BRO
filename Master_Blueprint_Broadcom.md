@@ -50,6 +50,8 @@ The **Advaya FM Elite Broadcom Pilot** integrates cutting‑edge AI models, a pr
 ## YAAD Anomaly Detection (Vajra Shield)
 
 - **Technical Doc**: `.conductor/yaad_alertness_logic.md` – Mathematical logic for alertness variance.
+- **Career Tiers**: **Elite, Professional, Safe, Danger** mapped to $S_{ea}$ ranges.
+- **Execution Protocol**: Cloud Function deployment with **30-second TTL** on telemetry data for DPDP compliance.
 - **Alertness Score ($S_{ea}$)**: Set at **0.85 Threshold**. Triggers Didi interventions if score drops below 0.7.
 - **Interventions**: Localized Gemma 4B feedback for gaze drift, liveness failure, and environmental issues.
 

@@ -95,34 +95,38 @@ class HazardTestEngine:
         return round(random.uniform(0.5, 2.0), 3)
 
     def _generate_report(self, driver_id, score, avg_latency):
-        print(f"\n*** TEST RESULT FOR {driver_id} ***")
-        print(f"Score: {score:.1f}% (Required: {self.pass_criteria['min_score']}%)")
-        print(f"Avg Latency: {int(avg_latency)}ms (Max Allowed: {self.pass_criteria['max_avg_latency']}ms)")
+        # In full integration, sea_score would come from YAAD Cloud Function
+        # Simulating S_ea based on latency for demo purposes
+        sea_score = 1.0 - (avg_latency / 5000) # Baseline mock
         
-        # Vajra Action Scoring Tiers
-        if avg_latency < 1000:
-            tier = "Elite (Vajra Eye)"
-        elif 1000 <= avg_latency < 2000:
-            tier = "Professional"
-        elif 2000 <= avg_latency < 3000:
-            tier = "Safe"
-        else:
-            tier = "Danger"
+        print(f"\n*** VAJRA PROGRESS REPORT: {driver_id} ***")
+        print(f"Hazard Score: {score:.1f}%")
+        print(f"Alertness Score (S_ea): {sea_score:.2f}")
 
-        pass_score = score >= self.pass_criteria['min_score']
-        pass_latency = avg_latency <= self.pass_criteria['max_avg_latency']
-        
-        if pass_score and pass_latency:
-            status = f"PASSED - Tier: {tier}"
+        # YAAD Scoring Tiers & Career Impact
+        if sea_score >= 0.95:
+            tier = "ELITE"
+            impact = "Bonus Eligibility"
+            didi_msg = "Shabaash! Aapne Elite standard dikhaya hai. Isi tarah chaliye."
+        elif 0.85 <= sea_score < 0.95:
+            tier = "PROFESSIONAL"
+            impact = "Standard Qualified"
+            didi_msg = "Achha kaam hai, bhaiya. Thoda aur dhyan dein toh Elite ban jayenge."
+        elif 0.75 <= sea_score < 0.85:
+            tier = "SAFE"
+            impact = "Retraining Suggested"
+            didi_msg = "Aap safe hain, par dhyan bhatak raha hai. Kal aur behtar karna."
         else:
-            status = f"FAILED - Tier: {tier}"
-            if not pass_score: print("Reason: Score too low.")
-            if not pass_latency: print("Reason: Reaction too slow.")
+            tier = "DANGER"
+            impact = "Lockout Trigger"
+            didi_msg = "Rukiye. Aap thake hue lag rahe hain. Break lein aur supervisor se baat karein."
 
-        print(f"Final Status: {status}")
+        print(f"Career Rank: {tier}")
+        print(f"Impact: {impact}")
+        print(f"\n[Pragati (Gemma 4B)]: {didi_msg}")
         
-        if tier == "Danger" or status == "FAILED":
-            print("Action: Mandatory Retake of Module 5 Video.")
+        if tier == "DANGER":
+            print("\n[VAJRA SHIELD]: Account Locked. Supervisor notification sent.")
 
 if __name__ == "__main__":
     engine = HazardTestEngine()
