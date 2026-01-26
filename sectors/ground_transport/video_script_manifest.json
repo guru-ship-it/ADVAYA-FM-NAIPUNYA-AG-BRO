@@ -1,90 +1,106 @@
 [
     {
-        "module": 1,
+        "mod_id": 1,
         "title": "The Professional Partner",
         "persona": "Pragati",
-        "opening_line": "Aapki pehchaan aapke kaam se hai. Let's build the Elite standard together.",
-        "veo_prompt": "Cinematic sunlight hitting a clean transport vehicle; driver adjusting collar in rearview mirror. Style: Photorealistic, cinematic lighting, Indian corporate context.",
-        "voice_config": {
-            "locale": "hi-IN",
-            "model": "hi-IN-Wavenet-D"
-        }
+        "didi_hook": "Namaste bhaiya. Uniform saaf, mann shaant—yahi ek Elite driver ki pehchaan hai.",
+        "veo_visual": "Macro of polished badge and ironed sleeve; driver greeting with a smile.",
+        "vajra_check_intervals": [
+            "04:00",
+            "08:00",
+            "12:00"
+        ],
+        "total_duration_min": 15
     },
     {
-        "module": 2,
+        "mod_id": 2,
         "title": "Digital Navigations",
         "persona": "Pragati",
-        "opening_line": "Technology is your best friend on the road. Let’s master the Gulgul tools.",
-        "veo_prompt": "Macro shot of a smartphone screen showing a smooth route map; finger tapping with precision. Style: High-tech, clean UI focus.",
-        "voice_config": {
-            "locale": "en-IN",
-            "model": "en-IN-Wavenet-D"
-        }
+        "didi_hook": "Mobile app dushman nahi, dost hai. Sahi rasta aur sahi kamaayi, dono aapki mutthi mein.",
+        "veo_visual": "POV of smartphone screen; smooth navigation through Bangalore city map UI.",
+        "vajra_check_intervals": [
+            "04:00",
+            "08:00",
+            "12:00"
+        ],
+        "total_duration_min": 15
     },
     {
-        "module": 3,
+        "mod_id": 3,
         "title": "POSH: The Elite Guard",
         "persona": "Pragati",
-        "opening_line": "Respect is non-negotiable. At Advaya, we protect everyone’s dignity.",
-        "veo_prompt": "CCTV style footage of a well-lit office hallway; security intervention transition. Style: Security cam aesthetics, professional deterrence.",
-        "voice_config": {
-            "locale": "hi-IN",
-            "model": "hi-IN-Wavenet-D"
-        }
+        "didi_hook": "Izzat sabse badi daulat hai. Mahilaon ki suraksha aur samman hi humara dharma hai.",
+        "veo_visual": "Driver opening door for passenger with professional distance; respectful body language.",
+        "vajra_check_intervals": [
+            "04:00",
+            "08:00",
+            "12:00"
+        ],
+        "total_duration_min": 15
     },
     {
-        "module": 4,
+        "mod_id": 4,
         "title": "The Vajra Inspection",
         "persona": "Pragati",
-        "opening_line": "Your machine is your livelihood. Keep it sharp, keep it safe.",
-        "veo_prompt": "Detailed mechanical check of brake pads and fluid levels; high-contrast metallic textures. Style: Macro, industrial, high-fidelity.",
-        "voice_config": {
-            "locale": "hi-IN",
-            "model": "hi-IN-Wavenet-D"
-        }
+        "didi_hook": "Gaadi ki hifazat, khud ki hifazat. Rozana 5 minute ka checkup aapko bade khatre se bachayega.",
+        "veo_visual": "Cinematic check of tire pressure and oil levels; industrial lighting on engine parts.",
+        "vajra_check_intervals": [
+            "04:00",
+            "08:00",
+            "12:00"
+        ],
+        "total_duration_min": 15
     },
     {
-        "module": 5,
+        "mod_id": 5,
         "title": "Defensive Driving",
         "persona": "Pragati",
-        "opening_line": "The road is full of surprises. Be the one who is always prepared.",
-        "veo_prompt": "POV van driving through narrow lane; sudden hazard (child/van) appearing; smooth avoidance. Style: POV, action-oriented, emergency braking motion.",
-        "voice_config": {
-            "locale": "en-IN",
-            "model": "en-IN-Wavenet-D"
-        }
+        "didi_hook": "Aapki savdhani hi aapka sabse bada insurance hai. Har mod par taiyar rahiye.",
+        "veo_visual": "POV driving; hazard detection simulation; ball rolling into the street; smooth braking.",
+        "vajra_check_intervals": [
+            "04:00",
+            "08:00",
+            "12:00"
+        ],
+        "total_duration_min": 15
     },
     {
-        "module": 6,
+        "mod_id": 6,
         "title": "City Mastery",
         "persona": "Pragati",
-        "opening_line": "Bangalore traffic is a test of patience. Let’s pass it every day.",
-        "veo_prompt": "Time-lapse of heavy city traffic merging into lanes; focus on mirror signaling; heavy rain effects. Style: Time-lapse, 360-degree mirror check sequence.",
-        "voice_config": {
-            "locale": "en-IN",
-            "model": "en-IN-Wavenet-D"
-        }
+        "didi_hook": "Lane discipline hi shehar ki raftaar hai. Bina matlab ke horn nahi, bina wajah lane change nahi.",
+        "veo_visual": "Top-down drone shot of van merging into traffic flawlessly using indicators.",
+        "vajra_check_intervals": [
+            "04:00",
+            "08:00",
+            "12:00"
+        ],
+        "total_duration_min": 15
     },
     {
-        "module": 7,
+        "mod_id": 7,
         "title": "Tactical Night Safety",
         "persona": "Pragati",
-        "opening_line": "When the sun goes down, your focus must go up.",
-        "veo_prompt": "Nighttime driving; headlights reflecting on wet pavement; dashboard glow; high-glare oncoming traffic. Style: Low-light, high-glare, hydroplaning recovery motion.",
-        "voice_config": {
-            "locale": "en-IN",
-            "model": "en-IN-Wavenet-D"
-        }
+        "didi_hook": "Raat ke andhere mein aapki aankhein aur chamakni chahiye. Glare se bachein, surakshit chalein.",
+        "veo_visual": "Night POV; headlights on wet roads; driver toggling anti-glare mirror setting.",
+        "vajra_check_intervals": [
+            "04:00",
+            "08:00",
+            "12:00"
+        ],
+        "total_duration_min": 15
     },
     {
-        "module": 8,
+        "mod_id": 8,
         "title": "Emergency Response",
         "persona": "Pragati",
-        "opening_line": "In a crisis, you are the leader. Here is how you take charge.",
-        "veo_prompt": "Slow motion deployment of a fire extinguisher; driver guiding passengers to safety; cinematic roadside scene. Style: Slow-motion, heroic, dramatic lighting.",
-        "voice_config": {
-            "locale": "hi-IN",
-            "model": "hi-IN-Wavenet-D"
-        }
+        "didi_hook": "Mushkil waqt mein ghabrana nahi, lead karna hai. Aap ek Elite protector hain.",
+        "veo_visual": "Driver securing vehicle and guiding passengers to safety; fire extinguisher deployment.",
+        "vajra_check_intervals": [
+            "04:00",
+            "08:00",
+            "12:00"
+        ],
+        "total_duration_min": 15
     }
 ]

@@ -1,0 +1,90 @@
+[
+    {
+        "module": 1,
+        "title": "The Professional Partner",
+        "persona": "Pragati (Didi)",
+        "dialogue": {
+            "intro": "Namaste bhaiya. Advaya FM Elite family mein aapka swagat hai. Aaj se aap sirf ek driver nahi, ek 'Corporate Pilot' hain. Professionalism aapki uniform se shuru hoti hai.",
+            "body_1": "Yaad rakhiye, Broadcom ke executives ke liye punctuality sabse zaroori hai. Jab aap waqt par hote hain, tab aap unka bharosa jeet-te hain.",
+            "body_2": "Gaadi ke andar ka mahol hamesha silent aur comfortable hona chahiye. Aapki pehchaan aapke kaam se hai. Let's build the Elite standard together.",
+            "closing": "Aapka din shubh ho, Pilot. Hamesha savdhan rahein."
+        }
+    },
+    {
+        "module": 2,
+        "title": "Digital Navigations",
+        "persona": "Pragati (Didi)",
+        "dialogue": {
+            "intro": "Namaste. Mobile app dushman nahi, dost hai. Aaj hum 'Gulgul' interface ko samajhenge jo aapki kamayi aur rasta dono asaan banayega.",
+            "body_1": "Har trip se pehle app check karein. Sahi rasta chunne se fuel bachega aur Broadcom ke passengers waqt par pahunchenge.",
+            "body_2": "Technology ka sahi istemal hi ek modern driver ko 'Elite Pilot' banata hai. Sahi rasta aur sahi kamaayi, dono aapki mutthi mein.",
+            "closing": "Digital baniye, aage badhiye."
+        }
+    },
+    {
+        "module": 3,
+        "title": "POSH: The Elite Guard",
+        "persona": "Pragati (Didi)",
+        "dialogue": {
+            "intro": "Bhaiya, izzat sabse badi daulat hai. Advaya mein hum sabki dignity ki hifazat karte hain. Mahilaon ki suraksha aur samman hi humara dharma hai.",
+            "body_1": "Professional distance banaye rakhein. Agar aapko kuch bhi galat dikhe, toh 'Plan Hammer' ka istemal karein. System Vajra aapke saath hai.",
+            "body_2": "Aapka vyavhar hi Broadcom mein humare standards ko define karta hai. Respect is non-negotiable.",
+            "closing": "Samman dein, samman payein."
+        }
+    },
+    {
+        "module": 4,
+        "title": "The Vajra Inspection",
+        "persona": "Pragati (Didi)",
+        "dialogue": {
+            "intro": "Gaadi ki hifazat, khud ki hifazat. Ek Elite Pilot apni machine ko hamesha fit rakhta hai.",
+            "body_1": "Rozana sirf 5 minute ka checkup aapko bade khatre se bachayega. Tire pressure aur oil level hamesha check karein.",
+            "body_2": "Brake pads aur fluid levels ki Vajra inspection zaroori hai. Yaad rakhiye, aapki machine hi aapki livelihood hai. Keep it sharp.",
+            "closing": "Surakshit chalne ke liye tyayar rahein."
+        }
+    },
+    {
+        "module": 5,
+        "title": "Defensive Driving",
+        "persona": "Pragati (Didi)",
+        "dialogue": {
+            "intro": "Road par hamesha surprises hote hain. Savdhani hi aapka sabse bada insurance hai. Har mod par taiyar rahiye.",
+            "body_1": "Hazard detection ka matlab hai khatre ko pehle se pehchanna. Jab aap narrow lanes mein hote hain, tab focus double rakhiye.",
+            "body_2": "Emergency braking tab asaan hoti hai jab aap control mein hon. POV viewer mein in hazards ko pehchanne ki practice karein.",
+            "closing": "Soch samajh kar chalein, hamesha bachein."
+        }
+    },
+    {
+        "module": 6,
+        "title": "City Mastery",
+        "persona": "Pragati (Didi)",
+        "dialogue": {
+            "intro": "Bangalore traffic ek sabr ka imtihan hai. Lane discipline hi shehar ki raftaar hai. Let’s pass it every day.",
+            "body_1": "Bina matlab ke horn nahi, bina wajah lane change nahi. Mirrors ka sahi istemal hi aapko bheed mein alag banata hai.",
+            "body_2": "Indicators ka waqt par istemal karein. Top-down view mein dekhiye kaise ek professional traffic mein merge hota hai.",
+            "closing": "Sanyam rakhein, safar asaan banayein."
+        }
+    },
+    {
+        "module": 7,
+        "title": "Tactical Night Safety",
+        "persona": "Pragati (Didi)",
+        "dialogue": {
+            "intro": "Raat ke andhere mein aapki aankhein aur chamakni chahiye. Focus up, glare down.",
+            "body_1": "Baarish aur andhere mein glares se bachein. Anti-glare mirror ki settings hamesha sahi rakhein.",
+            "body_2": "Geeli sadkon par hydroplaning ka darr rehta hai. Raftar kam rakhein aur dashboard glow par nazar rakhein.",
+            "closing": "Raat ka safar, zimmedari ka safar."
+        }
+    },
+    {
+        "module": 8,
+        "title": "Emergency Response",
+        "persona": "Pragati (Didi)",
+        "dialogue": {
+            "intro": "Mushkil waqt mein ghabrana nahi, lead karna hai. Aap ek Elite protector hain.",
+            "body_1": "Crisis mein passengers aapki taraf dekhte hain. Fire extinguisher ka sahi istemal aur emergency exits ki jankari hona lazmi hai.",
+            "body_2": "First aid aur fire safety mein hamesha lead karein. Aapki training hi logon ki jaan bacha sakti hai.",
+            "closing": "Aapka hausla hi sabki jeet hai. Jai Hind."
+        }
+    }
+]

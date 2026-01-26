@@ -17,8 +17,10 @@ class CourseNavigator:
         self.driver_id = driver_id
         self.translator = GemmaTranslator()
         self.manifest_path = os.path.join(os.path.dirname(__file__), "course_manifest.json")
+        self.video_manifest_path = os.path.join(os.path.dirname(__file__), "video_script_manifest.json")
         self.progress_path = os.path.join(os.path.dirname(__file__), f"{driver_id}_progress.json")
         self.manifest = self._load_json(self.manifest_path)
+        self.video_manifest = self._load_json(self.video_manifest_path)
         self.progress = self._load_progress()
 
     def _load_json(self, path):
@@ -40,22 +42,25 @@ class CourseNavigator:
     def start_session(self):
         current_id = self.progress.get("current_module", "M1")
         module = next((m for m in self.manifest.get("modules", []) if m["id"] == current_id), None)
+        video_meta = next((v for v in self.video_manifest if v["mod_id"] == int(current_id[1:])), {})
 
         if not module:
             print("[Didi]: All modules completed, brother! You are a Vajra-level professional now.")
             return
 
         print(f"\n--- SESSION START: {module['title']} ({module['id']}) ---")
+        if video_meta.get("didi_hook"):
+            print(f"[Pragati (Gemma 4B)]: {video_meta['didi_hook']}")
         
         # Vajra Handshake Simulation
         if not self._check_vajra_liveness():
             print("[FAIL] Vajra Handshake Failed. Session Locked.")
             return
 
-        print(f"[Pragati (Gemma 4B)]: Let's begin {module['title']}. Pay close attention.")
+        print(f"[SYSTEM]: Loading module content...")
 
         if module["type"] == "theory":
-            self._run_theory_session(module)
+            self._run_theory_session(module, video_meta)
         elif module["type"] == "interactive_xr":
             self._run_xr_session(module)
 
@@ -67,18 +72,22 @@ class CourseNavigator:
         print(f"[PASS] Identity Verified via GCP Math Engine.")
         return True
 
-    def _run_theory_session(self, module):
-        watch_time = module.get("min_watch_time_s", 30)
-        print(f"[SYSTEM]: Buffering theory video... ({watch_time}s required)")
+    def _run_theory_session(self, module, video_meta):
+        duration = video_meta.get("total_duration_min", 15)
+        intervals = video_meta.get("vajra_check_intervals", [])
         
-        # Intermittent liveness logic
-        if watch_time > 10:
-            time.sleep(1)
-            print("[VAJRA WATCH]: Continuous liveness check triggered...")
-            self._check_vajra_liveness()
+        print(f"[SYSTEM]: Playing 15-minute training video...")
         
-        time.sleep(1) # Simulated watch time completion
-        print(f"[SUCCESS]: Module {module['id']} theory content completed.")
+        for timestamp in intervals:
+            # Simulate video playing up to the interval
+            print(f"[STREAMING]: Video playing... current time: {timestamp}")
+            print("[VAJRA WATCH]: Scheduled liveness check triggered.")
+            if not self._check_vajra_liveness():
+                print("[FAIL] Liveness check failed. Content locked.")
+                return
+            time.sleep(0.5)
+        
+        print(f"[SUCCESS]: Module {module['id']} content completed.")
         self._mark_complete(module['id'])
 
     def _run_xr_session(self, module):
