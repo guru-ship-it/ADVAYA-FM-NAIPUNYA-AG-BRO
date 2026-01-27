@@ -11,7 +11,7 @@
 - **Functionality**: Authenticates with Google Play API using `service_account.json`.
 - **Translation**: `gemma_translator/translator_bridge.py` configured to use local **Translate Gemma 4B**.
   - **Status**: Integrated as "Pragati's Tongue". Local 2B model deleted.
-- **Status**: Verifies write access by attempting a transaction edit.
+- **Status**: Connection attempt identified successful authentication but requires "Google Play Android Developer API" enablement in GCP project `367548133623`.
 - **Security**: `service_account.json` is now ignored in `.gitignore` to prevent secret leakage.
 
 ### 2. Vajra Security Level (Broadcom Pilot)
