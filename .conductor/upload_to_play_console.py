@@ -2,8 +2,8 @@ import os
 from googleapiclient.discovery import build
 from google.oauth2 import service_account
 
-PACKAGE_NAME = "com.advaya.naipunya.total"
-BUNDLE_PATH = "outputs/advaya-release.aab"
+PACKAGE_NAME = "com.fm.naipunya"
+BUNDLE_PATH = ".conductor/advaya-release.aab"
 
 def upload_to_internal_track():
     creds = service_account.Credentials.from_service_account_file('service_account.json')

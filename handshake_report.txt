@@ -1,0 +1,23 @@
+--- HANDSHAKE DIAGNOSTIC REPORT ---
+Step 1: Authenticating with service_account.json...
+Authentication Successful.
+
+Testing Package: com.fm.naipunya
+  RESULT: FAILED (HTTP 403)
+  REASON: Permission Denied (Service account needs Admin user role for this app).
+
+Testing Package: com.advaya.fm
+  RESULT: FAILED (HTTP 403)
+  REASON: Permission Denied (Service account needs Admin user role for this app).
+
+Testing Package: com.advayaLMS.fm
+  RESULT: FAILED (HTTP 403)
+  REASON: Permission Denied (Service account needs Admin user role for this app).
+
+Testing Package: com.advaya.naipunya
+  RESULT: FAILED (HTTP 404)
+  REASON: Package Not Found (Maybe wrong package name or API project not linked).
+
+Testing Package: com.advaya.naipunya.total
+  RESULT: FAILED (HTTP 404)
+  REASON: Package Not Found (Maybe wrong package name or API project not linked).
