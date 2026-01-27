@@ -7,9 +7,9 @@ The **Advaya FM Elite Broadcom Pilot** integrates cutting‑edge AI models, a pr
 ## Integrated Models
 
 - **Translate Gemma 4B** – Handles real‑time translation and the "Didi" voice persona.
-- **Gemma 2 9B IT** – Core reasoning engine (the "Brain").
+- **Vertex AI (Cloud)** – Core reasoning engine (the "Brain") for complex analysis and course logic.
 
-*Model configuration is stored in `gemma_translator/model_config.json`.*
+*Translator configuration is stored in `gemma_translator/model_config.json`.*
 
 ## Pragati Persona
 

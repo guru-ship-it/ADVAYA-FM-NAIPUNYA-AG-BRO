@@ -1,0 +1,22 @@
+Step 1: Authenticating...
+
+Checking package com.advaya.fm...
+FAILED for com.advaya.fm: <HttpError 403 when requesting https://androidpublisher.googleapis.com/androidpublisher/v3/applications/com.advaya.fm/edits?alt=json returned "The caller does not have permission". Details: "The caller does not have permission">
+Content: {
+  "error": {
+    "code": 403,
+    "message": "The caller does not have permission",
+    "status": "PERMISSION_DENIED"
+  }
+}
+
+
+Checking package com.advayaLMS.fm...
+FAILED for com.advayaLMS.fm: <HttpError 403 when requesting https://androidpublisher.googleapis.com/androidpublisher/v3/applications/com.advayaLMS.fm/edits?alt=json returned "The caller does not have permission". Details: "The caller does not have permission">
+Content: {
+  "error": {
+    "code": 403,
+    "message": "The caller does not have permission",
+    "status": "PERMISSION_DENIED"
+  }
+}

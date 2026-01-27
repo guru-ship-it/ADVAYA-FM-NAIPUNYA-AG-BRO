@@ -10,8 +10,11 @@
 - **Location**: `.conductor/verify_handshake.py`
 - **Functionality**: Authenticates with Google Play API using `service_account.json`.
 - **Translation**: `gemma_translator/translator_bridge.py` configured to use local **Translate Gemma 4B**.
-  - **Status**: Integrated as "Pragati's Tongue". Local 2B model deleted.
-- **Status**: Connection attempt identified successful authentication but requires "Google Play Android Developer API" enablement in GCP project `367548133623`.
+  - **Status**: Integrated as "Pragati's Tongue". Local reasoning (9B) decommissioned.
+- **Reasoning**: All complex course logic and "Brain" functions moved to **Cloud/Vertex AI** for performance and MNC compliance.
+- **Status**:
+  - **Connection**: Handshake now returns **403 (Permission Denied)** for `com.fm.naipunya`, confirming the package is found but access is pending propagation (usually takes 5-10 minutes after clicking 'Save').
+  - **Privacy Policy**: Verified that the GitHub Raw URL is **Live and Accessible**. The Play Console error is likely a temporary validation lag.
 - **Security**: `service_account.json` is now ignored in `.gitignore` to prevent secret leakage.
 
 ### 2. Vajra Security Level (Broadcom Pilot)

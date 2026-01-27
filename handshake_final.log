@@ -1,0 +1,10 @@
+Step 1: Authenticating...
+Step 2: Checking package com.fm.naipunya...
+FAILED: <HttpError 403 when requesting https://androidpublisher.googleapis.com/androidpublisher/v3/applications/com.fm.naipunya/edits?alt=json returned "The caller does not have permission". Details: "The caller does not have permission">
+Content: {
+  "error": {
+    "code": 403,
+    "message": "The caller does not have permission",
+    "status": "PERMISSION_DENIED"
+  }
+}
