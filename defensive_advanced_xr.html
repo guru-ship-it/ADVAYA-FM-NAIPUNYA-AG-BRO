@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>FM NaipuNya | Defensive Driving Basic XR</title>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <style>
+        .xr-ui {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            font-family: sans-serif;
+            border-left: 5px solid #00ff00;
+            z-index: 100;
+            max-width: 300px;
+        }
+
+        .logo {
+            color: #00ff00;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .counter {
+            font-size: 1.2rem;
+            color: #ffff00;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="xr-ui">
+        <div class="logo">FM NAIPUNYA ELITE</div>
+        <div id="instruction">Identify 3 hazards by clicking/looking at them.</div>
+        <div class="counter">Hazards Found: <span id="count">0</span>/3</div>
+    </div>
+
+    <a-scene cursor="fuse: true; rayOrigin: mouse">
+        <!-- Sky / Environment -->
+        <a-sky src="https://cdn.aframe.io/360-guide/city/city.jpg"></a-sky>
+
+        <!-- Hazards -->
+        <a-entity id="hazard1" position="-5 1 -10" geometry="primitive: box" material="color: yellow; opacity: 0.5"
+            animation="property: scale; to: 1.2 1.2 1.2; dir: alternate; loop: true; dur: 1000" class="clickable"
+            onclick="found('hazard1', 'Blind Spot Vehicle')">
+            <a-text value="HAZARD: BLIND SPOT" position="-1 1.5 0" color="red"></a-text>
+        </a-entity>
+
+        <a-entity id="hazard2" position="8 1 -5" geometry="primitive: sphere" material="color: yellow; opacity: 0.5"
+            animation="property: position; to: 8 2 -5; dir: alternate; loop: true; dur: 800" class="clickable"
+            onclick="found('hazard2', 'Jaywalker')">
+            <a-text value="HAZARD: JAYWALKER" position="-1 1.5 0" color="red"></a-text>
+        </a-entity>
+
+        <a-entity id="hazard3" position="2 1 10" geometry="primitive: cylinder" material="color: yellow; opacity: 0.5"
+            class="clickable" onclick="found('hazard3', 'Pothole')">
+            <a-text value="HAZARD: POTHOLE" position="-1 1.5 0" color="red"></a-text>
+        </a-entity>
+
+        <!-- Pragati Avatar Prompt -->
+        <a-image src="assets/branding/official/pragati_assistant.jpg" position="0 2 -3" width="1"
+            height="1.5"></a-image>
+        <a-text value="Excellent work, Pilot!" id="success-msg" position="-1 3 -3" color="white"
+            visible="false"></a-text>
+
+        <!-- Camera -->
+        <a-camera>
+            <a-cursor color="white"></a-cursor>
+        </a-camera>
+    </a-scene>
+
+    <script>
+        let score = 0;
+        const foundList = [];
+
+        function found(id, name) {
+            if (foundList.includes(id)) return;
+            foundList.push(id);
+            score++;
+            document.getElementById('count').innerText = score;
+            const el = document.getElementById(id);
+            el.setAttribute('material', 'color', 'green');
+            el.setAttribute('material', 'opacity', '0.8');
+
+            if (score === 3) {
+                document.getElementById('instruction').innerText = "Vajra Check Passed. High focus maintained.";
+                document.getElementById('success-msg').setAttribute('visible', 'true');
+                setTimeout(() => {
+                    alert("Module 4 XR Simulation Complete. Returning to Portal.");
+                    window.parent.postMessage({ type: 'xr_complete', moduleId: 4 }, '*');
+                }, 2000);
+            }
+        }
+    </script>
+</body>
+
+</html>

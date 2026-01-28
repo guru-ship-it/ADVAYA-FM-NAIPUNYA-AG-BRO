@@ -1,0 +1,223 @@
+{
+    "project": "Advaya FM NaipuNya - Broadcom Pilot",
+    "version": "7.8.0-Gold",
+    "architecture": "40_Blocks_Per_Module_3_Segments_Per_Block",
+    "modules": [
+        {
+            "id": 1,
+            "title": "Foundations: The Professional Partner",
+            "focus": "Grooming, Ethics, First Impressions",
+            "blocks": [
+                {
+                    "block_idx": 1,
+                    "segments": [
+                        {
+                            "id": "S1",
+                            "en": "Welcome to the Advaya FM Elite program. I am Pragati, your digital coach.",
+                            "te": "అద్వయ ఎఫ్ఎమ్ ఎలైట్ ప్రోగ్రామ్కు స్వాగతం. నేను మీ డిజిటల్ కోచ్ ప్రగతిని."
+                        },
+                        {
+                            "id": "S2",
+                            "en": "Today, we transform from being just drivers to professional service partners.",
+                            "te": "ఈ రోజు, మనం కేవలం డ్రైవర్ల నుండి ప్రొఫెషనల్ సర్వీస్ భాగస్వాములుగా మారుతున్నాము."
+                        },
+                        {
+                            "id": "S3",
+                            "en": "Your first impression is your strongest shield in the corporate world.",
+                            "te": "కార్పొరేట్ ప్రపంచంలో మీ మొదటి అభిప్రాయమే మీ బలమైన కవచం."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "title": "Digital Skill: The Navigator",
+            "focus": "Advaya App & GPS Ethics",
+            "blocks": [
+                {
+                    "block_idx": 1,
+                    "segments": [
+                        {
+                            "id": "S1",
+                            "en": "Technology is your co-pilot. Mastering the Advaya app ensures efficiency.",
+                            "te": "సాంకేతికత మీ కో-పైలట్. అద్వయ యాప్లో నైపుణ్యం సాధించడం సామర్థ్యాన్ని నిర్ధారిస్తుంది."
+                        },
+                        {
+                            "id": "S2",
+                            "en": "Real-time updates and GPS tracking are the backbone of our service promise.",
+                            "te": "రియల్ టైమ్ అప్డేట్లు మరియు GPS ట్రాకింగ్ మా సేవా వాగ్దానానికి వెన్నెముక."
+                        },
+                        {
+                            "id": "S3",
+                            "en": "Never manipulate location data. Integrity is our highest compliance standard.",
+                            "te": "లొకేషన్ డేటాను ఎప్పుడూ తారుమారు చేయవద్దు. చిత్తశుద్ధి మా అత్యున్నత ప్రమాణం."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "title": "Elite Conduct: The Guardian",
+            "focus": "POSH & Customer Etiquette",
+            "blocks": [
+                {
+                    "block_idx": 1,
+                    "segments": [
+                        {
+                            "id": "S1",
+                            "en": "Safety is not just driving; it is the atmosphere you create in the cabin.",
+                            "te": "భద్రత అంటే కేవలం డ్రైవింగ్ మాత్రమే కాదు; ఇది క్యాబిన్లో మీరు సృష్టించే వాతావరణం."
+                        },
+                        {
+                            "id": "S2",
+                            "en": "Respecting boundaries and maintaining dignity is our POSH protocol.",
+                            "te": "సరిహద్దులను గౌరవించడం మరియు గౌరవాన్ని కాపాడుకోవడం మా POSH ప్రోటోకాల్."
+                        },
+                        {
+                            "id": "S3",
+                            "en": "Zero tolerance for harassment. We protect our riders and our reputation.",
+                            "te": "వేధింపుల విషయంలో జీరో టాలరెన్స్. మేము మా రైడర్లను మరియు మా ప్రతిష్టను రక్షిస్తాము."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "title": "Vajra Guard: The Shield",
+            "focus": "5-Point Daily Vehicle Hygiene Check",
+            "blocks": [
+                {
+                    "block_idx": 1,
+                    "segments": [
+                        {
+                            "id": "S1",
+                            "en": "Your vehicle is your workspace. Keep it mission-ready every single day.",
+                            "te": "మీ వాహనం మీ పని ప్రదేశం. దీన్ని ప్రతిరోజూ మిషన్-రెడీగా ఉంచండి."
+                        },
+                        {
+                            "id": "S2",
+                            "en": "The 5-point check includes tires, fluids, brakes, cabin hygiene, and SOS functions.",
+                            "te": "5-పాయింట్ చెక్లో టైర్లు, ఫ్లూయిడ్స్, బ్రేక్లు, క్యాబిన్ పరిశుభ్రత మరియు SOS ఉంటాయి."
+                        },
+                        {
+                            "id": "S3",
+                            "en": "A dirty cabin is a sign of a lazy professional. Excellence starts with hygiene.",
+                            "te": "అపరిశుభ్రమైన క్యాబిన్ బద్ధకానికి సంకేతం. శ్రేష్ఠత పరిశుభ్రతతో మొదలవుతుంది."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "title": "Defensive I: The Observer",
+            "focus": "Basic Hazard Perception & 3-Sec Rule",
+            "blocks": [
+                {
+                    "block_idx": 1,
+                    "segments": [
+                        {
+                            "id": "S1",
+                            "en": "The road is unpredictable. Your focus must remain constant and unwavering.",
+                            "te": "రహదారి అనూహ్యమైనది. మీ దృష్టి నిరంతరం మరియు అచంచలంగా ఉండాలి."
+                        },
+                        {
+                            "id": "S2",
+                            "en": "Defensive driving means anticipating hazards before they even occur.",
+                            "te": "డిఫెన్సివ్ డ్రైవింగ్ అంటే ప్రమాదాలు జరగకముందే వాటిని ఊహించడం."
+                        },
+                        {
+                            "id": "S3",
+                            "en": "Maintain the 3-second rule at all times to ensure a safe following distance.",
+                            "te": "సురక్షితమైన దూరాన్ని నిర్ధారించడానికి ఎల్లప్పుడూ 3-సెకన్ల నియమాన్ని పాటించండి."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "title": "Defensive II: The Master",
+            "focus": "Advanced Lane Discipline & Merging",
+            "blocks": [
+                {
+                    "block_idx": 1,
+                    "segments": [
+                        {
+                            "id": "S1",
+                            "en": "Mastery of the city roads requires discipline and patience in every lane.",
+                            "te": "సిటీ రోడ్లపై పట్టు సాధించడానికి క్రమశిక్షణ మరియు ఓర్పు అవసరం."
+                        },
+                        {
+                            "id": "S2",
+                            "en": "Always signal early before merging. Communication on the road saves lives.",
+                            "te": "లీనమయ్యే ముందు ఎల్లప్పుడూ ముందుగానే సిగ్నల్ ఇవ్వండి. రోడ్డుపై కమ్యూనికేషన్ ప్రాణాలను కాపాడుతుంది."
+                        },
+                        {
+                            "id": "S3",
+                            "en": "Lane cutting is for amateurs. Professional pilots hold their ground with grace.",
+                            "te": "లేన్ కటింగ్ ఔత్సాహికుల కోసం. ప్రొఫెషనల్ పైలట్లు హుందాగా తమ స్థానాన్ని కాపాడుకుంటారు."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "title": "Night Watch: The Sentinel",
+            "focus": "Fatigue Management & Low-Visibility",
+            "blocks": [
+                {
+                    "block_idx": 1,
+                    "segments": [
+                        {
+                            "id": "S1",
+                            "en": "Night driving is a different battle. Fatigue is your silent enemy.",
+                            "te": "రాత్రిపూట డ్రైవింగ్ ఒక భిన్నమైన యుద్ధం. అలసట మీ నిశ్శబ్ద శత్రువు."
+                        },
+                        {
+                            "id": "S2",
+                            "en": "Rest is the most important part of your shift. A tired mind is a slow mind.",
+                            "te": "విశ్రాంతి మీ షిఫ్ట్లో అత్యంత ముఖ్యమైన భాగం. అలసిపోయిన మెదడు నెమ్మదిగా పని చేస్తుంది."
+                        },
+                        {
+                            "id": "S3",
+                            "en": "If you feel drowsy, stop immediately. No passenger's trip is worth a life.",
+                            "te": "మీకు నిద్రగా అనిపిస్తే, వెంటనే ఆగండి. ఏ ప్రయాణీకుడి ప్రయాణం ప్రాణం కంటే విలువైనది కాదు."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "title": "First Guard: The Responder",
+            "focus": "Emergency Response & First-Aid",
+            "blocks": [
+                {
+                    "block_idx": 1,
+                    "segments": [
+                        {
+                            "id": "S1",
+                            "en": "In a crisis, you are the first responder. Your calmness is your superpower.",
+                            "te": "సంక్షోభ సమయంలో, మీరు మొదటి స్పందనదారు. మీ ప్రశాంతతే మీ గొప్ప శక్తి."
+                        },
+                        {
+                            "id": "S2",
+                            "en": "Understand the SOS triggers in the Advaya app. Seconds save lives.",
+                            "te": "అద్వయ యాప్లోని SOS ట్రిగ్గర్లను అర్థం చేసుకోండి. సెకన్లు ప్రాణాలను కాపాడతాయి."
+                        },
+                        {
+                            "id": "S3",
+                            "en": "Keep your first aid kit ready. Basic knowledge can be the difference today.",
+                            "te": "మీ ప్రథమ చికిత్స కిట్ను సిద్ధంగా ఉంచుకోండి. ప్రాథమిక జ్ఞానం ఈ రోజు వ్యత్యాసాన్ని చూపగలదు."
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
