@@ -36,19 +36,16 @@ const modulePathData = [
         id: 4,
         title: { "English": "Defensive Driving: Basic", "Hindi": "डिफेंसिव ड्राइविंग: बेसिक", "Telugu": "డిఫెన్సివ్ డ్రైవింగ్: బేసిక్" },
         duration: "30 Mins",
+        total_seconds: 1800,
         timeline: [
-            { time: "00:00", type: "intro", label: { "English": "Zen Behind the Wheel" }, audio_hook: { "English": "Defensive driving is about prevention. Let's master the basics.", "Hindi": "डिफेंसिव ड्राइविंग रोकथाम के बारे में है। आइए बेसिक में महारत हासिल करें।", "Telugu": "డిఫెన్సివ్ డ్రైవింగ్ అంటే నివారణ గురించి. ప్రాథమిక విషయాలలో పట్టు సాధిద్దాం." } },
-            {
-                time: "02:00", type: "slides", label: { "English": "Deep Learning: Safe Gaps" }, content: [
-                    { "English": "The 3-Second Rule: Why it saves lives.", "Hindi": "3-सेकंड का नियम: यह जीवन क्यों बचाता है।", "Telugu": "3-సెకన్ల నియమం: ఇది ఎందుకు ప్రాణాలను కాపాడుతుంది." },
-                    { "English": "Hazard Scanning: The 15-second eye-lead.", "Hindi": "खतरे की स्कैनिंग: 15-सेकंड की आई-लीड रणनीति।", "Telugu": "ప్రమాద స్కాన్: 15 సెకన్ల ఐ-लीड వ్యూహం." },
-                    { "English": "Anticipating the Unseen: Blind spots and junctions.", "Hindi": "अनदेखी का अनुमान: ब्लाइंड स्पॉट और जंक्शन।", "Telugu": "అదృశ్యమైన వాటిని అంచనా వేయడం: బ్లైండ్ స్పాట్‌లు మరియు జంక్షన్లు." },
-                    { "English": "Elite Pilot Focus: Removing mobile distractions.", "Hindi": "एलीट पायलट फोकस: मोबाइल से ध्यान हटने से बचें।", "Telugu": "ఎలైట్ పైలట్ ఫోకస్: మొబైల్ పరధ్యానాన్ని తొలగించడం." }
-                ]
-            },
-            { time: "08:00", type: "video", label: { "English": "Video: The Professional Standard" }, visualPrompt: "POV of driver safely merging into traffic; emphasizing shoulder checks; [OVERLAY: FM NaipuNya Logo]", image: "assets/branding/portal_previews/module_5_hazard_sim_1769587834004.png" },
-            { time: "10:00", type: "xr", label: { "English": "Interactive XR: Hazard Spotting" }, visualPrompt: "POV simulation of a suburban junction; identify 3 hazards; [Built-in Vajra Check]", xr_url: "defensive_basic_xr.html", image: "assets/branding/portal_previews/module_5_hazard_sim_1769587834004.png" },
-            { time: "25:00", type: "assessment", label: { "English": "Mastery Check" }, questions: [] }
+            { id: "intro", duration_s: 180, type: "intro", label: { "English": "Zen Orientation" }, audio_hook: { "English": "A pilot's mind is as important as their hands. Welcome to Defensive Mastery.", "Hindi": "पायलट का दिमाग उसके हाथों की तरह ही महत्वपूर्ण है। डिफेंसिव मास्टर में आपका स्वागत है।", "Telugu": "పైలట్ మనస్సు కూడా అతని చేతులంతే ముఖ్యం. డిఫెన్సివ్ మాస్టరీకి స్వాగతం." }, image: "assets/branding/portal_previews/module_1_professional_pilot_1769585570453.png" },
+            { id: "s1", duration_s: 105, type: "slides", label: { "English": "The 3-Second Rule" }, content: [{ "English": "Safe gap check. Why time matters more than distance.", "Hindi": "सुरक्षित दूरी की जांच। दूरी से ज्यादा समय क्यों मायने रखता है।", "Telugu": "సురక్షితమైన గ్యాప్ తనిఖీ. దూరం కంటే సమయం ఎందుకు ముఖ్యం." }], image: "assets/branding/portal_previews/m4_slide_1_following_distance_1769592766098.png" },
+            { id: "s2", duration_s: 105, type: "slides", label: { "English": "Scanning Strategy" }, content: [{ "English": "15-Second Lead time. Constant eye movements.", "Hindi": "15-सेकंड का लीड समय। निरंतर आंखों की हलचल।", "Telugu": "15-సెకన్ల లీడ్ టైమ్. కళ్ళు నిరంతరం గమనిస్తూ ఉండడం." }], image: "assets/branding/portal_previews/m4_slide_2_hazard_scanning_1769592931428.png" },
+            { id: "s3", duration_s: 105, type: "slides", label: { "English": "Blind Spot Awareness" }, content: [{ "English": "The zone of invisibility. Checking shoulders.", "Hindi": "अदृश्यता का क्षेत्र। कंधों की जांच करना।", "Telugu": "కనిపించని మండలం. భుజాలను తనిఖీ చేయడం." }], image: "assets/branding/portal_previews/m4_slide_3_blind_spots_1769593177524.png" },
+            { id: "s4", duration_s: 105, type: "slides", label: { "English": "The Focused Cockpit" }, content: [{ "English": "Zen interior. Removing mobile distractions.", "Hindi": "ज़ेन इंटीरियर। मोबाइल के ध्यान भटकाने वाली चीज़ों को हटाना।", "Telugu": "జెన్ ఇంటీరియర్. మొబైల్ పరధ్యానాలను తొలగించడం." }], image: "assets/branding/portal_previews/m4_slide_4_distract_free_1769593465561.png" },
+            { id: "v1", duration_s: 720, type: "video", label: { "English": "Tactical Driving Simulation" }, visualPrompt: "POV simulation cycling through various city traffic scenarios. [Built-in Vajra Liveness Checks]", image: "assets/branding/portal_previews/module_5_hazard_sim_1769587834004.png" },
+            { id: "xr", duration_s: 240, type: "xr", label: { "English": "Final XR Evaluation" }, xr_url: "defensive_basic_xr.html", image: "assets/branding/portal_previews/module_5_hazard_sim_1769587834004.png" },
+            { id: "exam", duration_s: 240, type: "assessment", label: { "English": "Final Mastery Certification" } }
         ]
     },
     {

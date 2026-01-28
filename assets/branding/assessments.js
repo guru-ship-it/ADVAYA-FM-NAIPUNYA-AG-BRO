@@ -11,7 +11,7 @@ const moduleAssessments = {
     ],
     2: [
         {
-            q: { "English": "How should you greet a Broadcom VIP?", "Hindi": "ब्रॉडकॉम वीआईपी का अभिवादन कैसे करना चाहिए?", "Telugu": "బ్రాడ్‌కామ్ VIPని మీరు ఎలా పలకరించాలి?" },
+            q: { "English": "How should you greet a VIP?", "Hindi": "वीआईपी का अभिवादन कैसे करना चाहिए?", "Telugu": "VIPని మీరు ఎలా పలకరించాలి?" },
             options: [
                 { "English": "Good Morning Sir/Ma'am", "Hindi": "सुप्रभात सर/मैम", "Telugu": "గుడ్ మార్నింగ్ సర్/మేమ్" },
                 { "English": "Informal 'Hi'", "Hindi": "अनौपचारिक 'हाय'", "Telugu": "అనధికారికంగా 'హాయ్'" }
@@ -39,16 +39,6 @@ const moduleAssessments = {
             correct: 0
         }
     ],
-    7: [
-        {
-            q: { "English": "What is the consequence of verbal harassment under the Hammer policy?", "Hindi": "हैमर नीति के तहत मौखिक उत्पीड़न का परिणाम क्या है?", "Telugu": "హ్యామర్ పాలసీ ప్రకారం మాటలతో వేధించడం వల్ల కలిగే పరిణామం ఏమిటి?" },
-            options: [
-                { "English": "Immediate Termination", "Hindi": "तत्काल बर्खास्तगी", "Telugu": "వెంటనే తొలగించడం" },
-                { "English": "Warning Letter", "Hindi": "चेतावनी पत्र", "Telugu": "హెచ్చరిక లేఖ" }
-            ],
-            correct: 0
-        }
-    ]
     5: [
         {
             q: { "English": "What is lane discipline in urban driving?", "Hindi": "शहरी ड्राइविंग में लेन अनुशासन क्या है?", "Telugu": "పట్టణ డ్రైవింగ్‌లో లేన్ క్రమశిక్షణ అంటే ఏమిటి?" },
@@ -69,6 +59,16 @@ const moduleAssessments = {
             correct: 0
         }
     ],
+    7: [
+        {
+            q: { "English": "What is the consequence of verbal harassment under the Hammer policy?", "Hindi": "हैमर नीति के तहत मौखिक उत्पीड़न का परिणाम क्या है?", "Telugu": "హ్యామర్ పాలసీ ప్రకారం మాటలతో వేధించడం వల్ల కలిగే పరిణామం ఏమిటి?" },
+            options: [
+                { "English": "Immediate Termination", "Hindi": "तत्काल बर्खास्तगी", "Telugu": "వెంటనే తొలగించడం" },
+                { "English": "Warning Letter", "Hindi": "चेतावनी पत्र", "Telugu": "హెచ్చరిక లేఖ" }
+            ],
+            correct: 0
+        }
+    ],
     8: [
         {
             q: { "English": "What is CPR used for?", "Hindi": "सीपीआर का उपयोग किस लिए किया जाता है?", "Telugu": "CPR దేనికి ఉపయోగించబడుతుంది?" },
@@ -79,3 +79,4 @@ const moduleAssessments = {
             correct: 0
         }
     ]
+};
