@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Advaya FM: ModCore VR</title>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
+    <script src="modules.js"></script>
+    <script src="grooming.js"></script>
+</head>
+
+<body>
+    <a-scene xr-mode-ui="enabled: true">
+        <a-assets>
+            <a-asset-item id="cab" src="assets/vajra_cab.glb"></a-asset-item>
+            <a-asset-item id="kit" src="assets/grooming_kit.glb"></a-asset-item>
+        </a-assets>
+
+        <a-entity id="pragati" position="0 1.5 -2">
+            <a-text id="pragati-text" value="Welcome Pilot. I am Pragati. Let's begin." align="center" color="#FFF"
+                width="3"></a-text>
+        </a-entity>
+
+        <a-camera><a-cursor color="#FFD700"></a-cursor></a-camera>
+
+        <a-entity id="module-content"></a-entity>
+
+        <!-- Initialize Logic -->
+        <script>
+            // Simple bootstrapper to load Module 1 by default for testing
+            // usage: loadModule1();
+            // In production, this will be triggered by Flutter via JS Interop
+        </script>
+    </a-scene>
+</body>
+
+</html>
