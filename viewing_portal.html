@@ -404,7 +404,7 @@
             }
 
             const q = questions[0];
-            document.getElementById('question-text').innerText = q.q;
+            document.getElementById('question-text').innerText = q.q[currentLang];
             const opts = document.getElementById('options-container');
             opts.innerHTML = '';
             q.options.forEach((opt, idx) => {
@@ -413,7 +413,7 @@
                 b.style.background = 'rgba(255,255,255,0.1)';
                 b.style.color = '#fff';
                 b.style.marginBottom = '10px';
-                b.innerText = opt;
+                b.innerText = opt[currentLang];
                 b.onclick = () => alert(idx === q.correct ? "Correct! Pilot status confirmed." : "Incorrect. Didi suggests reviewing the slides.");
                 opts.appendChild(b);
             });
@@ -425,7 +425,19 @@
             document.getElementById('assessment-view').style.display = 'none';
         }
 
-        window.onload = init;
+        function launchXR(url) {
+            window.open(url, '_blank');
+        }
+
+        window.addEventListener('message', (event) => {
+            if (event.data.type === 'xr_complete') {
+                console.log('XR Complete for module:', event.data.moduleId);
+                // logic to unlock next step or show tick
+            }
+        });
+
+        init();
+        setLang('English'); // Initialize default
     </script>
 
 </body>

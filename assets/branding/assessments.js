@@ -49,5 +49,33 @@ const moduleAssessments = {
             correct: 0
         }
     ]
-    // Remaining assessments for M5, M6, M8 follow same logic
-};
+    5: [
+        {
+            q: { "English": "What is lane discipline in urban driving?", "Hindi": "शहरी ड्राइविंग में लेन अनुशासन क्या है?", "Telugu": "పట్టణ డ్రైవింగ్‌లో లేన్ క్రమశిక్షణ అంటే ఏమిటి?" },
+            options: [
+                { "English": "Sticking to one lane", "Hindi": "एक ही लेन में रहना", "Telugu": "ఒకే లేన్‌లో ఉండటం" },
+                { "English": "Constant lane changing", "Hindi": "लगातार लेन बदलना", "Telugu": "నిరంతరం లేన్ మార్చడం" }
+            ],
+            correct: 0
+        }
+    ],
+    6: [
+        {
+            q: { "English": "What is hydroplaning?", "Hindi": "हाइड्रोप्लानिंग क्या है?", "Telugu": "హైడ్రోప్లానింగ్ అంటే ఏమిటి?" },
+            options: [
+                { "English": "Tires losing grip on water", "Hindi": "पानी पर टायरों की पकड़ ढीली होना", "Telugu": "నీటిపై టైర్లు పట్టు కోల్పోవడం" },
+                { "English": "Driving fast in rain", "Hindi": "बारिश में तेज गाड़ी चलाना", "Telugu": "వర్షంలో వేగంగా డ్రైవింగ్ చేయడం" }
+            ],
+            correct: 0
+        }
+    ],
+    8: [
+        {
+            q: { "English": "What is CPR used for?", "Hindi": "सीपीआर का उपयोग किस लिए किया जाता है?", "Telugu": "CPR దేనికి ఉపయోగించబడుతుంది?" },
+            options: [
+                { "English": "Restarting the heart/breathing", "Hindi": "हृदय/सांस को फिर से शुरू करना", "Telugu": "గుండె/శ్వాసను పునఃప్రారంభించడం" },
+                { "English": "Cleaning a wound", "Hindi": "घाव साफ करना", "Telugu": "గాయాన్ని శుభ్రం చేయడం" }
+            ],
+            correct: 0
+        }
+    ]

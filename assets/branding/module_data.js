@@ -38,9 +38,17 @@ const modulePathData = [
         duration: "30 Mins",
         timeline: [
             { time: "00:00", type: "intro", label: { "English": "Zen Behind the Wheel" }, audio_hook: { "English": "Defensive driving is about prevention. Let's master the basics.", "Hindi": "डिफेंसिव ड्राइविंग रोकथाम के बारे में है। आइए बेसिक में महारत हासिल करें।", "Telugu": "డిఫెన్సివ్ డ్రైవింగ్ అంటే నివారణ గురించి. ప్రాథమిక విషయాలలో పట్టు సాధిద్దాం." } },
-            { time: "02:00", type: "slides", label: { "English": "3-Second Rule" }, content: [{ "English": "Maintain safe distance. Anticipate hazards early.", "Hindi": "सुरक्षित दूरी बनाए रखें। खतरों का जल्दी अनुमान लगाएं।", "Telugu": "సురక్షిత దూరాన్ని పాటించండి. ప్రమాదాలను ముందుగానే ఊహించండి." }] },
-            { time: "10:00", type: "xr", label: { "English": "Interactive XR: Hazard Detection", "Hindi": "इंटरएक्टिव XR: खतरा पहचान", "Telugu": "ఇంటరాక్టివ్ XR: ప్రమాద గుర్తింపు" }, visualPrompt: "Interactive XR Scene: Spotting hazards in a suburban corporate road; [Built-in Vajra Check]", xr_url: "defensive_basic_xr.html", image: "assets/branding/portal_previews/module_5_hazard_sim_1769587834004.png" },
-            { time: "25:00", type: "assessment", label: { "English": "Basic Drills" }, questions: [] }
+            {
+                time: "02:00", type: "slides", label: { "English": "Deep Learning: Safe Gaps" }, content: [
+                    { "English": "The 3-Second Rule: Why it saves lives.", "Hindi": "3-सेकंड का नियम: यह जीवन क्यों बचाता है।", "Telugu": "3-సెకన్ల నియమం: ఇది ఎందుకు ప్రాణాలను కాపాడుతుంది." },
+                    { "English": "Hazard Scanning: The 15-second eye-lead.", "Hindi": "खतरे की स्कैनिंग: 15-सेकंड की आई-लीड रणनीति।", "Telugu": "ప్రమాద స్కాన్: 15 సెకన్ల ఐ-लीड వ్యూహం." },
+                    { "English": "Anticipating the Unseen: Blind spots and junctions.", "Hindi": "अनदेखी का अनुमान: ब्लाइंड स्पॉट और जंक्शन।", "Telugu": "అదృశ్యమైన వాటిని అంచనా వేయడం: బ్లైండ్ స్పాట్‌లు మరియు జంక్షన్లు." },
+                    { "English": "Elite Pilot Focus: Removing mobile distractions.", "Hindi": "एलीट पायलट फोकस: मोबाइल से ध्यान हटने से बचें।", "Telugu": "ఎలైట్ పైలట్ ఫోకస్: మొబైల్ పరధ్యానాన్ని తొలగించడం." }
+                ]
+            },
+            { time: "08:00", type: "video", label: { "English": "Video: The Professional Standard" }, visualPrompt: "POV of driver safely merging into traffic; emphasizing shoulder checks; [OVERLAY: FM NaipuNya Logo]", image: "assets/branding/portal_previews/module_5_hazard_sim_1769587834004.png" },
+            { time: "10:00", type: "xr", label: { "English": "Interactive XR: Hazard Spotting" }, visualPrompt: "POV simulation of a suburban junction; identify 3 hazards; [Built-in Vajra Check]", xr_url: "defensive_basic_xr.html", image: "assets/branding/portal_previews/module_5_hazard_sim_1769587834004.png" },
+            { time: "25:00", type: "assessment", label: { "English": "Mastery Check" }, questions: [] }
         ]
     },
     {
