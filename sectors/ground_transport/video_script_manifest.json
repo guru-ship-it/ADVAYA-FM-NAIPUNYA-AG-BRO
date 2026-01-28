@@ -4,7 +4,7 @@
         "title": "The Professional Partner",
         "persona": "Pragati",
         "didi_hook": "Namaste bhaiya. Uniform saaf, mann shaant—yahi ek Elite driver ki pehchaan hai.",
-        "veo_visual": "Macro of polished badge and ironed sleeve; driver greeting with a smile.",
+        "veo_visual": "Macro of polished badge and ironed sleeve; driver greeting with a smile; [OVERLAY: FM NaipuNya Logo Top-Right]; [CONTEXT: Broadcom Bangalore Main Gate]",
         "vajra_check_intervals": [
             "04:00",
             "08:00",
@@ -17,7 +17,7 @@
         "title": "Digital Navigations",
         "persona": "Pragati",
         "didi_hook": "Mobile app dushman nahi, dost hai. Sahi rasta aur sahi kamaayi, dono aapki mutthi mein.",
-        "veo_visual": "POV of smartphone screen; smooth navigation through Bangalore city map UI.",
+        "veo_visual": "POV of smartphone screen; smooth navigation through Bangalore city map UI; [OVERLAY: FM NaipuNya Logo Top-Right]; [CONTEXT: Broadcom Digital Kiosk]",
         "vajra_check_intervals": [
             "04:00",
             "08:00",
@@ -30,7 +30,7 @@
         "title": "POSH: The Elite Guard",
         "persona": "Pragati",
         "didi_hook": "Izzat sabse badi daulat hai. Mahilaon ki suraksha aur samman hi humara dharma hai.",
-        "veo_visual": "Driver opening door for passenger with professional distance; respectful body language.",
+        "veo_visual": "Driver opening door for passenger with professional distance; respectful body language; [OVERLAY: FM NaipuNya Logo Top-Right]; [CONTEXT: Broadcom Lobby Entrance]",
         "vajra_check_intervals": [
             "04:00",
             "08:00",
@@ -43,7 +43,7 @@
         "title": "The Vajra Inspection",
         "persona": "Pragati",
         "didi_hook": "Gaadi ki hifazat, khud ki hifazat. Rozana 5 minute ka checkup aapko bade khatre se bachayega.",
-        "veo_visual": "Cinematic check of tire pressure and oil levels; industrial lighting on engine parts.",
+        "veo_visual": "Cinematic check of tire pressure and oil levels; industrial lighting on engine parts; [OVERLAY: FM NaipuNya Logo Top-Right]; [CONTEXT: Broadcom Parking Lot B]",
         "vajra_check_intervals": [
             "04:00",
             "08:00",
@@ -56,7 +56,7 @@
         "title": "Defensive Driving",
         "persona": "Pragati",
         "didi_hook": "Aapki savdhani hi aapka sabse bada insurance hai. Har mod par taiyar rahiye.",
-        "veo_visual": "POV driving; hazard detection simulation; ball rolling into the street; smooth braking.",
+        "veo_visual": "POV driving; hazard detection simulation; ball rolling into the street; smooth braking; [OVERLAY: FM NaipuNya Logo Top-Right]; [CONTEXT: Outer Ring Road near Broadcom Site]",
         "vajra_check_intervals": [
             "04:00",
             "08:00",
@@ -69,7 +69,7 @@
         "title": "City Mastery",
         "persona": "Pragati",
         "didi_hook": "Lane discipline hi shehar ki raftaar hai. Bina matlab ke horn nahi, bina wajah lane change nahi.",
-        "veo_visual": "Top-down drone shot of van merging into traffic flawlessly using indicators.",
+        "veo_visual": "Top-down drone shot of van merging into traffic flawlessly using indicators; [OVERLAY: FM NaipuNya Logo Top-Right]; [CONTEXT: Broadcom Employee Drop-off Zone]",
         "vajra_check_intervals": [
             "04:00",
             "08:00",
@@ -82,7 +82,7 @@
         "title": "Tactical Night Safety",
         "persona": "Pragati",
         "didi_hook": "Raat ke andhere mein aapki aankhein aur chamakni chahiye. Glare se bachein, surakshit chalein.",
-        "veo_visual": "Night POV; headlights on wet roads; driver toggling anti-glare mirror setting.",
+        "veo_visual": "Night POV; headlights on wet roads; driver toggling anti-glare mirror setting; [OVERLAY: FM NaipuNya Logo Top-Right]; [CONTEXT: Broadcom Night Shift Route]",
         "vajra_check_intervals": [
             "04:00",
             "08:00",
@@ -95,7 +95,7 @@
         "title": "Emergency Response",
         "persona": "Pragati",
         "didi_hook": "Mushkil waqt mein ghabrana nahi, lead karna hai. Aap ek Elite protector hain.",
-        "veo_visual": "Driver securing vehicle and guiding passengers to safety; fire extinguisher deployment.",
+        "veo_visual": "Driver securing vehicle and guiding passengers to safety; fire extinguisher deployment; [OVERLAY: FM NaipuNya Logo Top-Right]; [CONTEXT: Broadcom Emergency Muster Point]",
         "vajra_check_intervals": [
             "04:00",
             "08:00",

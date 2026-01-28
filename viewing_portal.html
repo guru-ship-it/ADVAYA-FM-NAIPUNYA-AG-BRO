@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advaya FM: Elite Viewing Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #004a99;
+            --accent: #ffcc00;
+            --bg: #0a0e14;
+            --card-bg: #161c24;
+            --text: #e0e6ed;
+            --muted: #919eab;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            padding: 20px;
+            background: linear-gradient(135deg, var(--primary), #002d5e);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .status-badge {
+            background: rgba(0, 255, 128, 0.1);
+            color: #00ff80;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid rgba(0, 255, 128, 0.3);
+        }
+
+        main {
+            padding: 20px;
+            flex-grow: 1;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .module-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .mod-card {
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+            border: 1px solid transparent;
+            text-align: center;
+        }
+
+        .mod-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .mod-card.active {
+            background: var(--primary);
+            border-color: var(--accent);
+        }
+
+        .content-panel {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 25px;
+            min-height: 400px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .module-header {
+            margin-bottom: 20px;
+        }
+
+        .module-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .module-subtitle {
+            color: var(--accent);
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .didi-box {
+            background: rgba(255, 204, 0, 0.05);
+            border-left: 4px solid var(--accent);
+            padding: 15px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        .slides-container {
+            margin: 20px 0;
+        }
+
+        .slide-item {
+            display: flex;
+            align-items: start;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .slide-item::before {
+            content: "✓";
+            color: var(--accent);
+            margin-right: 15px;
+            font-weight: bold;
+        }
+
+        .visual-preview {
+            width: 100%;
+            height: 200px;
+            background: #000;
+            border-radius: 12px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: var(--muted);
+            text-align: center;
+            padding: 20px;
+            border: 1px dashed var(--muted);
+            position: relative;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .logo-overlay {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            justify-content: center;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: 1px solid var(--muted);
+            color: var(--text);
+            padding: 5px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .lang-btn.active {
+            background: var(--accent);
+            color: #000;
+            border-color: var(--accent);
+        }
+
+        .assessment-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg);
+            z-index: 100;
+            display: none;
+            padding: 30px;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            background: var(--accent);
+            color: #000;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        footer {
+            padding: 20px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="assets/branding/official/fm_naipunya_logo.jpg" alt="FM NaipuNya Logo"
+                style="height: 50px; vertical-align: middle; margin-right: 10px;">
+            FM NAIPUNYA <span style="font-weight:300">Elite</span>
+        </div>
+        <div class="status-badge" id="vajra-status">Vajra Status: ONLINE</div>
+    </header>
+
+    <main>
+        <div style="text-align: center; margin-bottom: 20px;">
+            <img src="assets/branding/official/pragati_assistant.jpg" alt="Pragati Assistant"
+                style="width: 150px; height: 150px; border-radius: 50%; border: 3px solid var(--accent); object-fit: cover; box-shadow: 0 0 20px rgba(255, 204, 0, 0.3);">
+            <div style="font-weight: 600; color: var(--accent); margin-top: 10px;">PRAGATI: Your Career Coach</div>
+        </div>
+        <div class="lang-switch">
+            <button class="lang-btn active" onclick="setLang('English')">English</button>
+            <button class="lang-btn" onclick="setLang('Hindi')">Hindi</button>
+            <button class="lang-btn" onclick="setLang('Telugu')">Telugu</button>
+        </div>
+
+        <div class="module-selector" id="mod-selector">
+            <!-- Generated by JS -->
+        </div>
+
+        <div class="content-panel" id="content-panel">
+            <div id="module-view">
+                <div class="module-header">
+                    <div class="module-subtitle" id="mod-subtitle">The Spirit of Service</div>
+                    <div class="module-title" id="mod-title">The Professional Partner</div>
+                    <div style="font-size: 0.8rem; color: var(--muted);" id="mod-meta">Persona: Didi | Duration: 12 Mins
+                    </div>
+                </div>
+
+                <div class="didi-box" id="didi-message">
+                    "Welcome to the Elite family. You are not just turning a wheel; you are carrying the minds that
+                    build the future."
+                </div>
+
+                <div class="slides-container" id="slides-container">
+                    <!-- Slides go here -->
+                </div>
+
+                <div class="visual-preview" id="visual-preview">
+                    <div class="logo-overlay">ADVAYA FM LOGO</div>
+                    [Veo 3.1 Prompt]: Macro of polished badge...
+                </div>
+
+                <button class="btn" onclick="showAssessment()" id="assessment-label">Take Assessment</button>
+            </div>
+
+            <div class="assessment-overlay" id="assessment-view">
+                <h3>Module Assessment</h3>
+                <div id="question-text" style="margin-bottom: 20px; font-weight: 600;"></div>
+                <div id="options-container"></div>
+                <button class="btn" style="background:var(--muted)" onclick="closeAssessment()">Back to Module</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        © 2026 Advaya FM NaipuNya | Global Elite Pilot Build 1.5
+    </footer>
+
+    <script src="assets/branding/module_data.js"></script>
+    <script src="assets/branding/translations.js"></script>
+    <script src="assets/branding/assessments.js"></script>
+
+    <script>
+        let currentModId = 1;
+        let currentLang = 'English';
+
+        function init() {
+            const selector = document.getElementById('mod-selector');
+            selector.innerHTML = '';
+            modulePathData.forEach(mod => {
+                const card = document.createElement('div');
+                card.className = `mod-card ${mod.id === currentModId ? 'active' : ''}`;
+                card.id = `mod-card-${mod.id}`;
+                card.innerHTML = `<div style="font-weight:bold; font-size:1.2rem;">M${mod.id}</div><div style="font-size:0.7rem;">${mod.title[currentLang]}</div>`;
+                card.onclick = () => selectModule(mod.id);
+                selector.appendChild(card);
+            });
+            updateView();
+        }
+
+        function selectModule(id) {
+            document.querySelectorAll('.mod-card').forEach(c => c.classList.remove('active'));
+            document.getElementById(`mod-card-${id}`).classList.add('active');
+            currentModId = id;
+            updateView();
+        }
+
+        function setLang(lang) {
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+            currentLang = lang;
+            updateView();
+        }
+
+        function updateView() {
+            const mod = modulePathData.find(m => m.id === currentModId);
+            const trans = translations[currentLang];
+
+            // Update Header & Meta
+            document.getElementById('mod-title').innerText = mod.title[currentLang];
+            document.getElementById('mod-meta').innerText = `Persona: Pragati | Duration: ${mod.duration}`;
+            document.getElementById('vajra-status').innerText = trans.status;
+            document.getElementById('assessment-label').innerText = trans.assessment;
+
+            // Update selector labels (titles)
+            const selector = document.getElementById('mod-selector');
+            selector.querySelectorAll('.mod-card').forEach(card => {
+                const mId = parseInt(card.id.split('-').pop());
+                const m = modulePathData.find(x => x.id === mId);
+                if (m) card.querySelector('div:last-child').innerText = m.title[currentLang];
+            });
+
+            // Clear containers
+            const slidesBox = document.getElementById('slides-container');
+            slidesBox.innerHTML = '';
+
+            const preview = document.getElementById('visual-preview');
+            preview.style.backgroundImage = 'none';
+            preview.innerHTML = '';
+
+            // Render Timeline
+            mod.timeline.forEach(step => {
+                if (step.type === 'intro') {
+                    document.getElementById('didi-message').innerText = `"${step.audio_hook[currentLang]}"`;
+                }
+
+                if (step.type === 'slides') {
+                    step.content.forEach(s => {
+                        const item = document.createElement('div');
+                        item.className = 'slide-item';
+                        item.innerText = s[currentLang];
+                        slidesBox.appendChild(item);
+                    });
+                }
+
+                if ((step.type === 'video' || step.type === 'xr') && step.image) {
+                    preview.style.backgroundImage = `url('${step.image}')`;
+                    preview.style.borderColor = 'var(--accent)';
+                    const labelPrefix = step.type === 'xr' ? 'INTERACTIVE XR:' : 'VIDEO PREVIEW:';
+                    preview.innerHTML = `<div class="logo-overlay">FM NAIPUNYA</div>
+                                         <div style="position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.6); padding: 5px 10px; font-size: 0.7rem; border-radius: 5px;">
+                                            ${labelPrefix} ${step.label[currentLang]}
+                                         </div>
+                                         <div style="font-size: 3rem; opacity: 0.8; color: white;">${step.type === 'xr' ? '🕶️' : '▶'}</div>
+                                         ${step.type === 'xr' ? `
+                                            <div style="background: rgba(0,0,0,0.8); color: white; padding: 15px; border-radius: 10px; width: 80%; text-align: left; font-size: 0.85rem; border: 1px solid var(--accent); margin-top:10px;">
+                                                <div style="color: var(--accent); font-weight: bold; margin-bottom: 8px;">🕶️ ${trans.xr_guide_title}</div>
+                                                <ul style="margin: 0; padding-left: 20px;">
+                                                    ${trans.xr_guide_steps.map(s => `<li style="margin-bottom: 5px;">${s}</li>`).join('')}
+                                                </ul>
+                                                <button style="background:var(--accent); color:black; border:none; padding:8px 15px; border-radius:20px; font-weight:bold; margin-top:10px; width:100%; cursor:pointer;" onclick="launchXR('${step.xr_url}')">
+                                                    LAUNCH SIMULATION
+                                                </button>
+                                            </div>
+                                         ` : ''}`;
+                }
+            });
+        }
+
+        function showAssessment() {
+            const view = document.getElementById('assessment-view');
+            const questions = moduleAssessments[currentModId];
+            if (!questions) {
+                alert("Assessment for this module is being processed by Vajra...");
+                return;
+            }
+
+            const q = questions[0];
+            document.getElementById('question-text').innerText = q.q;
+            const opts = document.getElementById('options-container');
+            opts.innerHTML = '';
+            q.options.forEach((opt, idx) => {
+                const b = document.createElement('button');
+                b.className = 'btn';
+                b.style.background = 'rgba(255,255,255,0.1)';
+                b.style.color = '#fff';
+                b.style.marginBottom = '10px';
+                b.innerText = opt;
+                b.onclick = () => alert(idx === q.correct ? "Correct! Pilot status confirmed." : "Incorrect. Didi suggests reviewing the slides.");
+                opts.appendChild(b);
+            });
+
+            view.style.display = 'block';
+        }
+
+        function closeAssessment() {
+            document.getElementById('assessment-view').style.display = 'none';
+        }
+
+        window.onload = init;
+    </script>
+
+</body>
+
+</html>

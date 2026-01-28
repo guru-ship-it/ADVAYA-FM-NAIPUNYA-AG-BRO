@@ -13,8 +13,8 @@
   - **Status**: Integrated as "Pragati's Tongue". Local reasoning (9B) decommissioned.
 - **Reasoning**: All complex course logic and "Brain" functions moved to **Cloud/Vertex AI** for performance and MNC compliance.
 - **Status**:
-  - **Connection**: Handshake now returns **403 (Permission Denied)** for `com.fm.naipunya`, confirming the package is found but access is pending propagation (usually takes 5-10 minutes after clicking 'Save').
-  - **Privacy Policy**: Verified that the GitHub Raw URL is **Live and Accessible**. The Play Console error is likely a temporary validation lag.
+  - **Connection**: **API ENABLED**. Handshake returns **403 (Permission Denied)** for `com.fm.naipunya`, confirming the project needs to be linked in the Play Console's "API access" section.
+  - **Privacy Policy**: Verified that the GitHub Raw URL is **Live and Accessible**.
 - **Security**: `service_account.json` is now ignored in `.gitignore` to prevent secret leakage.
 
 ### 2. Vajra Security Level (Broadcom Pilot)

@@ -1,80 +1,88 @@
 {
-    "project_name": "Advaya FM Elite Broadcom Pilot",
+    "project_name": "Advaya FM NaipuNya: Elite Transport Pilot",
     "total_modules": 8,
     "modules": [
         {
             "id": "M1",
-            "title": "The Professional Partner",
+            "title": "Grooming",
             "type": "theory",
             "prerequisites": [],
-            "min_watch_time_s": 10
+            "min_watch_time_s": 1800
         },
         {
             "id": "M2",
-            "title": "Digital Navigations",
+            "title": "Etiquettes",
             "type": "theory",
             "prerequisites": [
                 "M1"
             ],
-            "min_watch_time_s": 10
+            "min_watch_time_s": 1800
         },
         {
             "id": "M3",
-            "title": "POSH: The Elite Guard",
+            "title": "Customer Service",
             "type": "theory",
             "prerequisites": [
                 "M2"
             ],
-            "min_watch_time_s": 10
+            "min_watch_time_s": 1800
         },
         {
             "id": "M4",
-            "title": "The Vajra Inspection",
-            "type": "theory",
+            "title": "Defensive Driving: Basic",
+            "type": "interactive_xr",
             "prerequisites": [
                 "M3"
             ],
-            "min_watch_time_s": 10
+            "xr_scene": "defensive_basic_xr.html",
+            "pass_criteria": {
+                "min_score": 80
+            }
         },
         {
             "id": "M5",
-            "title": "Defensive Driving",
+            "title": "Defensive Driving: Medium",
             "type": "interactive_xr",
             "prerequisites": [
                 "M4"
             ],
-            "xr_scene": "hazard_simulation_xr.html",
+            "xr_scene": "defensive_medium_xr.html",
             "pass_criteria": {
-                "min_score": 80,
-                "max_avg_latency_ms": 1300
+                "min_score": 80
             }
         },
         {
             "id": "M6",
-            "title": "City Mastery",
-            "type": "theory",
+            "title": "Defensive Driving: Advanced",
+            "type": "interactive_xr",
             "prerequisites": [
                 "M5"
             ],
-            "min_watch_time_s": 10
+            "xr_scene": "defensive_advanced_xr.html",
+            "pass_criteria": {
+                "min_score": 80
+            }
         },
         {
             "id": "M7",
-            "title": "Tactical Night Safety",
+            "title": "POSH: Hammering for Drivers",
             "type": "theory",
             "prerequisites": [
                 "M6"
             ],
-            "min_watch_time_s": 10
+            "min_watch_time_s": 1800
         },
         {
             "id": "M8",
-            "title": "Emergency Response",
-            "type": "theory",
+            "title": "First Aid & Emergency Procedures",
+            "type": "interactive_xr",
             "prerequisites": [
                 "M7"
             ],
-            "min_watch_time_s": 10
+            "xr_scene": "first_aid_xr.html",
+            "pass_criteria": {
+                "min_score": 80
+            }
         }
     ]
 }
