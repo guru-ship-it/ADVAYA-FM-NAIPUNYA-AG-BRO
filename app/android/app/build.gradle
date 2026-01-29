@@ -23,8 +23,8 @@ if (flutterVersionName == null) {
 }
 
 android {
-    namespace "com.fm.naipunya"
-    compileSdkVersion flutter.compileSdkVersion
+    namespace "com.advaya.fm.naipunya"
+    compileSdkVersion 35
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -41,20 +41,35 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.fm.naipunya"
-        minSdkVersion flutter.minSdkVersion
-        targetSdkVersion flutter.targetSdkVersion
-        versionCode flutterVersionCode.toInteger()
+        applicationId "com.advaya.fm.naipunya"
+        minSdkVersion 24
+        targetSdkVersion 35
+        versionCode 1002
         versionName flutterVersionName
+    }
+
+    signingConfigs {
+        release {
+            keyAlias 'advaya_upload_key'
+            keyPassword 'advaya2026'
+            storeFile file('advaya_release_key.jks')
+            storePassword 'advaya2026'
+        }
     }
 
     buildTypes {
         release {
-            signingConfig signingConfigs.debug
+            // TODO: Add your own signing config for the release build.
+            // Signing with the debug keys for now, so `flutter run --release` works.
+            signingConfig signingConfigs.release
         }
     }
 }
 
 flutter {
     source '../..'
+}
+
+dependencies {
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.9.0'
 }

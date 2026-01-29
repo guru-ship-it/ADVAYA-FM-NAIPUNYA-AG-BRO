@@ -9,3 +9,21 @@ node_modules/
 flutter_sdk/
 android_sdk/
 openjdk/
+
+# Build and Log files
+*.log
+build_*.txt
+gradle_*.txt
+pub_*.txt
+clean_log.txt
+debug_log.txt
+deps_log.txt
+gradle_error.txt
+last_build_log.txt
+file_list.txt
+
+# Platform and Temp
+temp_proj/
+symbols/
+app/windows_disabled/
+

@@ -23,6 +23,11 @@ if %errorlevel% neq 0 (
 )
 git push -u origin main --force
 
+:: 5. Ensure Critical Policies are Pushed (Play Store Compliance)
+echo Pushing Critical compliance files...
+git push origin main PRIVACY_POLICY.md DATA_DELETION.md
+
+
 echo.
 echo Git Protocol Complete.
 pause

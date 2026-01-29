@@ -2,7 +2,7 @@ import os
 from googleapiclient.discovery import build
 from google.oauth2 import service_account
 
-PACKAGE_NAME = "com.fm.naipunya"
+PACKAGE_NAME = "com.advaya.fm.naipunya"
 BUNDLE_PATH = ".conductor/advaya-release.aab"
 
 def upload_to_internal_track():
