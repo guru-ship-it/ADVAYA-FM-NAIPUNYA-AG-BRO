@@ -31,17 +31,6 @@ call flutter pub get
 echo [BUILD] Building Android Bundle...
 call flutter build appbundle --release --verbose
 
-if %errorlevel% neq 0 (
-    echo.
-    echo [FAILURE] Build Failed.
-    pause
-    exit /b 1
-)
-
-echo.
-echo ==========================================
-echo [SUCCESS] AAB Generated Successfully!
 echo Location: d:\ADVAYA_FM_ELITE\app\build\app\outputs\bundle\release\app-release.aab
 echo ==========================================
-pause
 endlocal
