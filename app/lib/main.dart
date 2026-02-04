@@ -56,16 +56,29 @@ class _VajraShellState extends State<VajraShell> {
       ..setBackgroundColor(const Color(0x00000000))
       ..setNavigationDelegate(
         NavigationDelegate(
+          onProgress: (int progress) {
+            debugPrint('WebView is loading (progress : $progress%)');
+          },
           onPageFinished: (String url) {
+            debugPrint('Page finished loading: $url');
             setState(() {
               _isLoading = false;
             });
           },
           onWebResourceError: (WebResourceError error) {
-            debugPrint('XR Error: ${error.description}');
+            debugPrint('''
+              WebResourceError:
+                description: ${error.description}
+                errorCode: ${error.errorCode}
+                errorType: ${error.errorType}
+                isForMainFrame: ${error.isForMainFrame}
+            ''');
           },
         ),
       )
+      ..setOnConsoleMessage((JavaScriptConsoleMessage message) {
+        debugPrint('WebView Console: ${message.message} (${message.level})');
+      })
       ..addJavaScriptChannel(
         'AdvayaEngine',
         onMessageReceived: (JavaScriptMessage message) {
@@ -95,7 +108,23 @@ class _VajraShellState extends State<VajraShell> {
   }
 
   void _handleEngineMessage(String message) {
+    // Use diagnostic logging as per your plan
+    print("[ADVAYA DIAGNOSTIC] XR Event Received: $message");
     debugPrint("Vajra Message: $message");
+    
+    if (message.contains("SECURE") || message.contains("COMPLIANT")) {
+      // Trigger Pragati for the next pillar
+      print("[ADVAYA PROGRESS] Pillar 4: Vajra Guard COMPLETED.");
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Verification Success: $message')),
+      );
+    } else if (message == "THEORY_COMPLETE") {
+       print("[ADVAYA DIAGNOSTIC] Theory Session Verified. Entering Ritual.");
+       ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Theory Verified. Enter Ritual.')),
+      );
+    }
+
     try {
       final data = jsonDecode(message);
       if (data['type'] == 'OTP_REQUEST') {
@@ -106,12 +135,7 @@ class _VajraShellState extends State<VajraShell> {
         );
       }
     } catch (e) {
-       // Simple string message
-       if (message == 'M4_COMPLETE') {
-         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Vajra Guard (M4) Passed!')),
-        );
-       }
+       // Simple string message handled above
     }
   }
 

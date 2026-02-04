@@ -10,26 +10,123 @@
 </head>
 
 <body>
-    <a-scene xr-mode-ui="enabled: true">
-        <a-assets>
-            <a-asset-item id="cab" src="assets/vajra_cab.glb"></a-asset-item>
-            <a-asset-item id="kit" src="assets/grooming_kit.glb"></a-asset-item>
+    <a-scene xr-mode-ui="enabled: true" advaya-workflow>
+        <a-assets id="asset-manager">
+            <!-- Theory Assets (Comic Panels) will be injected here via JS -->
+            <!-- Practice Assets (Primitives) -->
         </a-assets>
 
-        <a-entity id="pragati" position="0 1.5 -2">
-            <a-text id="pragati-text" value="Welcome Pilot. I am Pragati. Let's begin." align="center" color="#FFF"
-                width="3"></a-text>
+        <a-entity id="theory-overlay" position="0 1.5 -2" visible="true">
+            <a-image id="comic-panel" width="3" height="4" position="0 0 0"></a-image>
+            <a-text id="interaction-hint" value="Tap to Swipe" position="0 -2.2 0" align="center"
+                color="#FFFF00"></a-text>
         </a-entity>
 
-        <a-camera><a-cursor color="#FFD700"></a-cursor></a-camera>
+        <a-entity id="practice-scene" visible="false">
+            <a-entity id="pragati" position="0 2.5 -2">
+                <a-text id="ui-text" value="Theory Verified. Begin Inspection." align="center" color="#FFFF00"
+                    width="4"></a-text>
+            </a-entity>
 
-        <a-entity id="module-content"></a-entity>
+            <!-- Placeholder for Vajra Cab (The Mission Object) -->
+            <a-box id="vajra-cab" position="0 0.5 -3" width="2" height="1.5" depth="4" color="#444" inspector-logic
+                animation="property: rotation; to: 0 360 0; loop: true; dur: 20000; easing: linear">
+                <a-text value="VAJRA CAB" align="center" position="0 1 0" side="double"></a-text>
+            </a-box>
 
-        <!-- Initialize Logic -->
+            <!-- Placeholder for Grooming Kit (The Compliance Object) -->
+            <a-sphere id="grooming-kit" position="1.5 0.5 -2" radius="0.3" color="#00FF00" inspector-logic>
+                <a-text value="KIT" align="center" position="0 0.5 0" side="double"></a-text>
+            </a-sphere>
+        </a-entity>
+
+        <a-camera>
+            <a-cursor fuse="true" fuse-timeout="2000" color="#FFD700"
+                animation__fusing="property: scale; from: 1 1 1; to: 0.1 0.1 0.1; dur: 2000; startEvents: fusing"
+                animation__mouseleave="property: scale; to: 1 1 1; dur: 500; startEvents: mouseleave"></a-cursor>
+        </a-camera>
+
+        <!-- Bridge & Workflow Interaction Logic -->
         <script>
-            // Simple bootstrapper to load Module 1 by default for testing
-            // usage: loadModule1();
-            // In production, this will be triggered by Flutter via JS Interop
+            // Advaya Engine: Theory -> Practice Transition
+            AFRAME.registerComponent('advaya-workflow', {
+                init: function () {
+                    this.state = 'THEORY';
+                    this.currentPanel = 0;
+                    this.logic = null;
+
+                    fetch('master_config.json')
+                        .then(response => response.json())
+                        .then(data => {
+                            this.manifest = data;
+                            this.loadModule('M4');
+                        });
+
+                    this.el.addEventListener('click', () => {
+                        if (this.state === 'THEORY') {
+                            this.nextPanel();
+                        }
+                    });
+                },
+
+                loadModule: function (id) {
+                    this.currentModule = this.manifest.modules.find(m => m.id === id);
+                    this.showComicPanel(0);
+                },
+
+                showComicPanel: function (index) {
+                    const panelUrl = this.manifest.asset_root + this.currentModule.theory_book[index];
+                    document.querySelector('#comic-panel').setAttribute('src', panelUrl);
+
+                    // Pragati Welcome Dialogue (Spatial Text)
+                    if (index === 0) {
+                        const dialogue = this.manifest.pragati_dialogues[this.currentModule.id + '_' + this.currentModule.name.replace(' ', '_')];
+                        if (dialogue) {
+                            document.querySelector('#ui-text').setAttribute('value', dialogue.welcome);
+                        }
+                    }
+                },
+
+                nextPanel: function () {
+                    this.currentPanel++;
+                    if (this.currentPanel < this.currentModule.theory_book.length) {
+                        this.showComicPanel(this.currentPanel);
+                    } else {
+                        this.startRitual();
+                    }
+                },
+
+                startRitual: function () {
+                    this.state = 'PRACTICE';
+                    document.querySelector('#theory-overlay').setAttribute('visible', 'false');
+                    document.querySelector('#practice-scene').setAttribute('visible', 'true');
+
+                    if (window.AdvayaEngine) {
+                        window.AdvayaEngine.postMessage("THEORY_COMPLETE");
+                    }
+                }
+            });
+
+            AFRAME.registerComponent('inspector-logic', {
+                init: function () {
+                    // "Gaze-Lock" logic - using click as the fuse result
+                    this.el.addEventListener('click', () => {
+                        const id = this.el.getAttribute('id');
+                        const status = (id === "vajra-cab") ? "Vajra Cab SECURE" : "Kit COMPLIANT";
+
+                        if (window.AdvayaEngine) {
+                            window.AdvayaEngine.postMessage(status);
+                        }
+
+                        // Spatial Feedback
+                        const uiText = document.querySelector('#ui-text');
+                        uiText.setAttribute('value', "PRAGATI: " + status + "!");
+                        uiText.setAttribute('color', '#00FF00');
+
+                        this.el.setAttribute('material', 'color', '#00FF00');
+                    });
+                }
+            });
         </script>
     </a-scene>
 </body>

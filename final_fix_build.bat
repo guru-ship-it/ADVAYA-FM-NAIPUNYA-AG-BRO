@@ -6,9 +6,11 @@ echo ==========================================
 
 :: 1. FORCE FIX GRADLE.PROPERTIES USING POWERSHELL (No Spaces guaranteed)
 echo [FIX] Repairing Gradle Properties...
-powershell -Command "$p = '%USERPROFILE%\.gradle\gradle.properties'; $v = 'org.gradle.java.home=d:/ADVAYA_FM_ELITE/openjdk/jdk-17.0.12+7'; Set-Content -Path $p -Value $v -Encoding Ascii"
+powershell -Command "$p = \"$env:USERPROFILE\.gradle\gradle.properties\"; $v = \"org.gradle.java.home=d:/ADVAYA_FM_ELITE/openjdk/jdk-17.0.12+7\"; Set-Content -Path $p -Value $v -Encoding Ascii"
 
-:: 2. VERIFY FIX
+:: 2. VERIFY FIX (Precision check)
+echo [VERIFY] Checking Gradle Properties...
+powershell -Command "$v = (Get-Content \"%USERPROFILE%\.gradle\gradle.properties\"); Write-Host \"Length: $($v.Length)\"; Write-Host \"Value: [$v]\""
 type "%USERPROFILE%\.gradle\gradle.properties"
 
 :: 3. SET ENV & BUILD

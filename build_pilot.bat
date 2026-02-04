@@ -22,7 +22,7 @@ echo [FIX] Updating Gradle Properties...
 set "GRADLE_PROP=%USERPROFILE%\.gradle\gradle.properties"
 if not exist "%USERPROFILE%\.gradle" mkdir "%USERPROFILE%\.gradle"
 :: Note: Using (echo command) to avoid trailing spaces
-(echo org.gradle.java.home=d:/ADVAYA_FM_ELITE/openjdk/jdk-17.0.12+7) > "%GRADLE_PROP%"
+(echo org.gradle.java.home=d:/ADVAYA_FM_ELITE/openjdk/jdk-17.0.12+7)> "%GRADLE_PROP%"
 
 :: 3. NAVIGATE AND BUILD
 cd /d "d:\ADVAYA_FM_ELITE\app"

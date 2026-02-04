@@ -1,0 +1,232 @@
+{
+    "project": "Advaya FM Elite",
+    "tech_stack": "Google Sovereign (Gemma 2b + GCS)",
+    "asset_root": "https://storage.googleapis.com/advaya-fm-assets/webxr/",
+    "modules": [
+        {
+            "id": "M1",
+            "name": "Foundations",
+            "scene": "Locker Room",
+            "theory_book": [
+                "m1_p1.webp",
+                "m1_p2.webp",
+                "m1_p3.webp",
+                "m1_p4.webp",
+                "m1_p5.webp",
+                "m1_p6.webp",
+                "m1_p7.webp",
+                "m1_p8.webp",
+                "m1_p9.webp",
+                "m1_p10.webp"
+            ],
+            "ritual": [
+                "Hair",
+                "Uniform",
+                "Nails",
+                "Badge",
+                "Shoes"
+            ],
+            "logic_type": "Visual Integrity Protocol"
+        },
+        {
+            "id": "M2",
+            "name": "Digital Skill",
+            "scene": "Virtual Cabin",
+            "theory_book": [
+                "m2_p1.webp",
+                "m2_p2.webp",
+                "m2_p3.webp",
+                "m2_p4.webp",
+                "m2_p5.webp",
+                "m2_p6.webp",
+                "m2_p7.webp",
+                "m2_p8.webp",
+                "m2_p9.webp",
+                "m2_p10.webp"
+            ],
+            "ritual": [
+                "Login",
+                "Data Sync",
+                "Pragati Handshake"
+            ],
+            "logic_type": "Vajra Tick Engine"
+        },
+        {
+            "id": "M3",
+            "name": "Elite Conduct",
+            "scene": "MNC Lobby",
+            "theory_book": [
+                "m3_p1.webp",
+                "m3_p2.webp",
+                "m3_p3.webp",
+                "m3_p4.webp",
+                "m3_p5.webp",
+                "m3_p6.webp",
+                "m3_p7.webp",
+                "m3_p8.webp",
+                "m3_p9.webp",
+                "m3_p10.webp"
+            ],
+            "ritual": [
+                "Identify Boundary",
+                "Gaze Lock 3s"
+            ],
+            "logic_type": "POSH Sphere"
+        },
+        {
+            "id": "M4",
+            "name": "Vajra Guard",
+            "scene": "360 Inspection",
+            "theory_book": [
+                "m4_p1.webp",
+                "m4_p2.webp",
+                "m4_p3.webp",
+                "m4_p4.webp",
+                "m4_p5.webp",
+                "m4_p6.webp",
+                "m4_p7.webp",
+                "m4_p8.webp",
+                "m4_p9.webp",
+                "m4_p10.webp"
+            ],
+            "ritual": [
+                "Tyres",
+                "Fluids",
+                "Lights",
+                "Wipers",
+                "Sanitization"
+            ],
+            "logic_type": "5-Point Ritual"
+        },
+        {
+            "id": "M5",
+            "name": "Defensive I",
+            "scene": "Hazard POV",
+            "theory_book": [
+                "m5_p1.webp",
+                "m5_p2.webp",
+                "m5_p3.webp",
+                "m5_p4.webp",
+                "m5_p5.webp",
+                "m5_p6.webp",
+                "m5_p7.webp",
+                "m5_p8.webp",
+                "m5_p9.webp",
+                "m5_p10.webp"
+            ],
+            "ritual": [
+                "Gap Check",
+                "Blind Spot"
+            ],
+            "logic_type": "3-Second Rule"
+        },
+        {
+            "id": "M6",
+            "name": "Defensive II",
+            "scene": "AR Tabletop",
+            "theory_book": [
+                "m6_p1.webp",
+                "m6_p2.webp",
+                "m6_p3.webp",
+                "m6_p4.webp",
+                "m6_p5.webp",
+                "m6_p6.webp",
+                "m6_p7.webp",
+                "m6_p8.webp",
+                "m6_p9.webp",
+                "m6_p10.webp"
+            ],
+            "ritual": [
+                "Lane Entry",
+                "Signal Logic"
+            ],
+            "logic_type": "Intersection Master"
+        },
+        {
+            "id": "M7",
+            "name": "Night Watch",
+            "scene": "Midnight Shift",
+            "theory_book": [
+                "m7_p1.webp",
+                "m7_p2.webp",
+                "m7_p3.webp",
+                "m7_p4.webp",
+                "m7_p5.webp",
+                "m7_p6.webp",
+                "m7_p7.webp",
+                "m7_p8.webp",
+                "m7_p9.webp",
+                "m7_p10.webp"
+            ],
+            "ritual": [
+                "Fatigue Tap 1",
+                "Fatigue Tap 2"
+            ],
+            "logic_type": "Luminance Guard"
+        },
+        {
+            "id": "M8",
+            "name": "First Guard",
+            "scene": "Crash Site",
+            "theory_book": [
+                "m8_p1.webp",
+                "m8_p2.webp",
+                "m8_p3.webp",
+                "m8_p4.webp",
+                "m8_p5.webp",
+                "m8_p6.webp",
+                "m8_p7.webp",
+                "m8_p8.webp",
+                "m8_p9.webp",
+                "m8_p10.webp"
+            ],
+            "ritual": [
+                "Assess",
+                "Call",
+                "Secure"
+            ],
+            "logic_type": "Golden Hour Response"
+        }
+    ],
+    "pragati_dialogues": {
+        "M1_Foundations": {
+            "welcome": "Namaste! I am Pragati. Before we enter the site, let's make sure you look like the professional you are. Check your mirror.",
+            "success": "Brilliant! A clean uniform is your first shield of respect."
+        },
+        "M2_Digital_Skill": {
+            "welcome": "Don't be afraid of the screen. Think of it as your digital ledger. Let's sync your data together.",
+            "success": "See? You've mastered the Digital Skill. Data is your new power."
+        },
+        "M3_Elite_Conduct": {
+            "welcome": "In this lobby, we are ambassadors of Advaya. Keep your gaze professional and your boundaries clear.",
+            "success": "Integrity is doing the right thing when no one is looking. Well done."
+        },
+        "M4_Vajra_Guard": {
+            "welcome": "The 5-Point Ritual is sacred. A driver's safety starts with his tyres and ends with his sanitization. Begin the ritual.",
+            "success": "The Vajra Cab is secure. You are ready for the road."
+        },
+        "M5_Defensive_I": {
+            "welcome": "The road is shared, but the responsibility is yours. Maintain the 3-second gap. Patience is the mark of an Elite driver.",
+            "success": "You kept the gap. You kept the trust. Safe arrival confirmed."
+        },
+        "M6_Defensive_II": {
+            "welcome": "Intersections are where legends are tested. Watch the lanes, follow the signals, and lead the way.",
+            "success": "Masterful discipline! You move the city safely."
+        },
+        "M7_Night_Watch": {
+            "welcome": "The world sleeps, but you are the guardian. Stay alert, stay bright. Tap the sequence to show me you're awake.",
+            "success": "Luminance Guard verified. The night is safe under your watch."
+        },
+        "M8_First_Guard": {
+            "welcome": "This is the Golden Hour. Seconds count. Stay calm, follow the sequence, and be the hero someone needs right now.",
+            "success": "You stood your ground when it mattered most. That is the heart of a First Guard."
+        }
+    },
+    "integration_rule": "Theory-First Gating",
+    "assets_status": "WebP Storybooks Verified",
+    "pragati_sync": "Enabled",
+    "ui_requirements": {
+        "overlay_type": "Figma-style Carousel",
+        "transition_effect": "Fade-to-Simulation"
+    }
+}
