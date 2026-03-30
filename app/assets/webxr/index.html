@@ -1,134 +1,231 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>Advaya FM: ModCore VR</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Advaya FM NaipuNya</title>
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
-    <script src="modules.js"></script>
-    <script src="grooming.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary:#1a73e8; --accent:#ffcc00; --bg:#0d1117; --card-bg:#161b22;
+            --text:#f0f6fc; --muted:#8b949e; --success:#3fb950; --safety-yellow:#DFFF00; --danger:#ea4335;
+        }
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+
+        .elite-header{padding:4px 10px;background:rgba(13,17,23,0.95);backdrop-filter:blur(15px);display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.08);position:fixed;top:0;width:100%;z-index:1000;}
+        .logo-text{font-weight:800;font-size:.75rem;letter-spacing:1px;color:#fff;}
+        .header-timer{font-family:monospace;font-size:1rem;color:var(--safety-yellow);font-weight:900;}
+        .header-logo{height:38px;border-radius:50%;object-fit:contain;background:rgba(255,255,255,0.95);padding:2px;}
+        .header-left,.header-right{display:flex;align-items:center;gap:6px;}
+
+        #view-select{padding:55px 15px 15px;min-height:100vh;display:flex;flex-direction:column;align-items:center;}
+        .persona-center{text-align:center;margin-bottom:12px;}
+        .avatar-face{width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin:0 auto;}
+        .welcome-text{color:var(--muted);font-size:.7rem;margin-top:8px;}
+        .module-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;max-width:400px;margin-top:10px;}
+        .module-card{background:var(--card-bg);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:12px;cursor:pointer;transition:.3s;position:relative;}
+        .module-card:hover{border-color:var(--accent);transform:translateY(-2px);}
+        .module-card.locked{opacity:.4;pointer-events:none;}
+        .module-card.completed{border-color:var(--success);}
+        .module-card .m-num{font-weight:900;font-size:.6rem;color:var(--accent);letter-spacing:2px;}
+        .module-card .m-title{font-weight:700;font-size:.75rem;margin-top:4px;}
+        .module-card .m-status{font-size:.55rem;color:var(--muted);margin-top:6px;}
+        .lock-icon{position:absolute;top:8px;right:8px;font-size:.8rem;}
+
+        .phase-view{display:none;padding:44px 0 0;min-height:100vh;flex-direction:column;}
+        .phase-view.active{display:flex;}
+
+        #view-story{background:#000;}
+        .story-screen{width:100%;flex:1;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#000;}
+        .story-img{max-width:100%;max-height:100%;object-fit:contain;}
+        .story-img.pan-active{animation:ken-burns 15s linear infinite alternate;}
+        @keyframes ken-burns{0%{transform:scale(1.0)}100%{transform:scale(1.08)}}
+        .story-dialogue{background:rgba(0,0,0,0.85);border-left:4px solid var(--accent);padding:10px 14px;margin:8px 12px;border-radius:6px;}
+        .story-dialogue p{font-style:italic;font-size:.82rem;line-height:1.5;}
+        .story-controls{display:flex;justify-content:space-between;align-items:center;padding:8px 15px;}
+        .story-nav-btn{background:var(--card-bg);color:var(--text);border:1px solid rgba(255,255,255,0.1);padding:8px 20px;border-radius:20px;font-weight:700;font-size:.75rem;cursor:pointer;font-family:'Outfit',sans-serif;}
+        .story-nav-btn.primary{background:var(--accent);color:#000;border:none;}
+        .story-progress{font-family:monospace;font-size:.7rem;color:var(--accent);font-weight:800;}
+        .story-timer-bar{height:3px;background:rgba(255,255,255,0.1);margin:0 12px;}
+        .story-timer-fill{height:100%;background:var(--accent);width:0%;transition:1s linear;}
+
+        #view-theory{background:var(--bg);}
+        .theory-container{flex:1;overflow-y:auto;padding:10px 15px 80px;}
+        .theory-card{background:var(--card-bg);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:16px;margin-bottom:12px;}
+        .theory-card h3{font-size:.85rem;color:var(--accent);margin-bottom:8px;}
+        .theory-card p{font-size:.8rem;line-height:1.6;color:var(--text);opacity:.9;}
+        .theory-card ul{padding-left:18px;margin-top:6px;}
+        .theory-card li{font-size:.75rem;line-height:1.6;color:var(--muted);margin-bottom:4px;}
+        .theory-footer{position:fixed;bottom:0;left:0;width:100%;padding:12px 15px;background:rgba(13,17,23,0.95);backdrop-filter:blur(10px);display:flex;justify-content:space-between;align-items:center;}
+        .theory-timer{font-family:monospace;color:var(--safety-yellow);font-weight:900;font-size:.85rem;}
+
+        #view-xr{padding-top:44px;}
+        #xr-scene-container{width:100%;height:calc(100vh - 100px);position:relative;}
+        .xr-hud{position:fixed;bottom:0;left:0;width:100%;padding:10px 15px;background:linear-gradient(transparent,rgba(0,0,0,0.9));z-index:100;display:flex;justify-content:space-between;align-items:center;}
+        .xr-status{font-size:.7rem;color:var(--success);font-weight:700;}
+        .xr-task{font-size:.75rem;color:var(--accent);font-weight:800;}
+
+        #view-quiz{background:var(--bg);}
+        .quiz-container{flex:1;overflow-y:auto;padding:10px 15px 90px;}
+        .quiz-header{text-align:center;padding:15px;}
+        .quiz-header h2{font-size:1rem;color:var(--accent);}
+        .quiz-header p{font-size:.7rem;color:var(--muted);margin-top:4px;}
+        .quiz-question{background:var(--card-bg);border-radius:10px;padding:16px;margin-bottom:12px;border:1px solid rgba(255,255,255,0.06);}
+        .quiz-question .q-num{font-size:.6rem;color:var(--accent);font-weight:800;letter-spacing:2px;}
+        .quiz-question .q-text{font-size:.85rem;margin:8px 0;font-weight:600;}
+        .quiz-option{display:block;width:100%;text-align:left;padding:10px 14px;margin-top:6px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:8px;color:var(--text);font-size:.75rem;cursor:pointer;font-family:'Outfit',sans-serif;}
+        .quiz-option:hover{border-color:var(--accent);}
+        .quiz-option.selected{border-color:var(--primary);background:rgba(26,115,232,0.15);}
+        .quiz-option.correct{border-color:var(--success);background:rgba(63,185,80,0.15);}
+        .quiz-option.wrong{border-color:var(--danger);background:rgba(234,67,53,0.15);}
+        .quiz-footer{position:fixed;bottom:0;left:0;width:100%;padding:12px 15px;background:rgba(13,17,23,0.95);backdrop-filter:blur(10px);display:flex;justify-content:space-between;align-items:center;}
+        .quiz-score{font-size:.85rem;color:var(--accent);font-weight:800;}
+
+        #view-complete{display:none;padding:60px 15px;text-align:center;min-height:100vh;justify-content:center;align-items:center;flex-direction:column;}
+        #view-complete.active{display:flex;}
+        .complete-badge{font-size:3rem;margin-bottom:15px;}
+        .complete-title{font-size:1.2rem;font-weight:800;color:var(--success);}
+        .complete-msg{font-size:.8rem;color:var(--muted);margin:10px 0 20px;}
+
+        .btn-engage{background:var(--accent);color:#000;padding:10px 30px;border-radius:30px;border:none;font-size:.85rem;font-weight:800;cursor:pointer;font-family:'Outfit',sans-serif;}
+        .btn-engage:disabled{opacity:.3;cursor:not-allowed;}
+        .btn-secondary{background:var(--card-bg);color:var(--text);padding:10px 30px;border-radius:30px;border:1px solid rgba(255,255,255,0.1);font-size:.8rem;font-weight:700;cursor:pointer;font-family:'Outfit',sans-serif;}
+
+        #vajra-pulse{position:fixed;width:65px;height:65px;background:var(--safety-yellow);border-radius:50%;display:none;justify-content:center;align-items:center;z-index:9000;cursor:pointer;box-shadow:0 0 35px var(--safety-yellow);font-weight:950;color:#000;font-size:.65rem;text-align:center;animation:pulse-ring 1s infinite;}
+        @keyframes pulse-ring{0%{transform:scale(.9);box-shadow:0 0 0 0 rgba(223,255,0,.7)}70%{transform:scale(1.1);box-shadow:0 0 0 15px rgba(223,255,0,0)}100%{transform:scale(.9)}}
+
+        #vajra-shield{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.92);z-index:9999;display:none;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px;}
+        .shield-msg{color:var(--accent);font-size:1.2rem;font-weight:900;margin-bottom:10px;}
+        .shield-sub{color:var(--muted);font-size:.85rem;margin-bottom:25px;}
+
+        .lang-bar{display:flex;gap:4px;justify-content:center;margin:10px 0;}
+        .lang-btn{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);color:var(--muted);padding:3px 10px;border-radius:8px;cursor:pointer;font-weight:600;font-size:.6rem;font-family:'Outfit',sans-serif;}
+        .lang-btn.active{background:var(--accent);color:#000;font-weight:800;}
+
+        /* Pragati Floating Assistant */
+        #pragati-assistant{position:fixed;bottom:70px;right:12px;z-index:800;display:flex;flex-direction:column;align-items:flex-end;gap:6px;transition:.3s;pointer-events:none;}
+        #pragati-assistant.hidden{opacity:0;transform:translateY(20px);}
+        .pragati-bubble{background:rgba(22,27,34,0.95);border:1px solid rgba(255,204,0,0.3);border-radius:12px 12px 0 12px;padding:10px 14px;max-width:260px;pointer-events:auto;backdrop-filter:blur(10px);box-shadow:0 4px 20px rgba(0,0,0,0.4);}
+        .pragati-bubble p{font-size:.72rem;line-height:1.5;color:var(--text);margin:0;}
+        .pragati-bubble .pragati-name{font-size:.55rem;font-weight:800;color:var(--accent);letter-spacing:1.5px;margin-bottom:3px;}
+        .pragati-avatar-wrap{pointer-events:auto;cursor:pointer;position:relative;}
+        .pragati-avatar{width:55px;height:55px;border-radius:50%;border:2px solid var(--accent);object-fit:cover;box-shadow:0 2px 15px rgba(255,204,0,0.25);transition:.3s;}
+        .pragati-avatar.speaking{border-color:var(--success);animation:pragati-glow 1s infinite alternate;}
+        @keyframes pragati-glow{from{box-shadow:0 0 5px var(--success)}to{box-shadow:0 0 18px var(--success)}}
+        .pragati-status{position:absolute;bottom:-2px;right:-2px;width:14px;height:14px;border-radius:50%;background:var(--success);border:2px solid var(--bg);font-size:0;}
+        .pragati-minimize{position:absolute;top:-4px;left:-4px;width:16px;height:16px;border-radius:50%;background:rgba(255,255,255,0.1);border:none;color:var(--muted);font-size:.5rem;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;}
+    </style>
 </head>
-
 <body>
-    <a-scene xr-mode-ui="enabled: true" advaya-workflow>
-        <a-assets id="asset-manager">
-            <!-- Theory Assets (Comic Panels) will be injected here via JS -->
-            <!-- Practice Assets (Primitives) -->
-        </a-assets>
 
-        <a-entity id="theory-overlay" position="0 1.5 -2" visible="true">
-            <a-image id="comic-panel" width="3" height="4" position="0 0 0"></a-image>
-            <a-text id="interaction-hint" value="Tap to Swipe" position="0 -2.2 0" align="center"
-                color="#FFFF00"></a-text>
-        </a-entity>
+<header class="elite-header">
+    <div class="header-left">
+        <img src="advaya_fm_logo.png" class="header-logo" alt="Advaya FM">
+    </div>
+    <span id="header-timer" class="header-timer"></span>
+    <div class="header-right">
+        <img src="fm_naipunya_logo.jpg" class="header-logo" alt="FM NaipuNya">
+    </div>
+</header>
 
-        <a-entity id="practice-scene" visible="false">
-            <a-entity id="pragati" position="0 2.5 -2">
-                <a-text id="ui-text" value="Theory Verified. Begin Inspection." align="center" color="#FFFF00"
-                    width="4"></a-text>
-            </a-entity>
+<!-- Pragati Floating Assistant -->
+<div id="pragati-assistant">
+    <div class="pragati-bubble" id="pragati-bubble">
+        <div class="pragati-name">PRAGATI DIDI</div>
+        <p id="pragati-msg">Namaste, Pilot! Main Pragati hoon, aapki personal career coach. Module select karein aur training shuru karein!</p>
+    </div>
+    <div class="pragati-avatar-wrap" onclick="NaipunyaEngine.togglePragati()">
+        <img class="pragati-avatar" id="pragati-avatar" src="pragati_face.jpg" alt="Pragati">
+        <span class="pragati-status"></span>
+    </div>
+</div>
 
-            <!-- Placeholder for Vajra Cab (The Mission Object) -->
-            <a-box id="vajra-cab" position="0 0.5 -3" width="2" height="1.5" depth="4" color="#444" inspector-logic
-                animation="property: rotation; to: 0 360 0; loop: true; dur: 20000; easing: linear">
-                <a-text value="VAJRA CAB" align="center" position="0 1 0" side="double"></a-text>
-            </a-box>
+<div id="vajra-shield">
+    <div class="shield-msg">VAJRA VISIBILITY SHIELD</div>
+    <div class="shield-sub">Focus lost. Training paused automatically.</div>
+    <button class="btn-engage" onclick="NaipunyaEngine.resumeFromShield()">RESUME TRAINING</button>
+</div>
 
-            <!-- Placeholder for Grooming Kit (The Compliance Object) -->
-            <a-sphere id="grooming-kit" position="1.5 0.5 -2" radius="0.3" color="#00FF00" inspector-logic>
-                <a-text value="KIT" align="center" position="0 0.5 0" side="double"></a-text>
-            </a-sphere>
-        </a-entity>
+<div id="vajra-pulse" onclick="NaipunyaEngine.provePulse()">VAJRA<br>TAP!</div>
 
-        <a-camera>
-            <a-cursor fuse="true" fuse-timeout="2000" color="#FFD700"
-                animation__fusing="property: scale; from: 1 1 1; to: 0.1 0.1 0.1; dur: 2000; startEvents: fusing"
-                animation__mouseleave="property: scale; to: 1 1 1; dur: 500; startEvents: mouseleave"></a-cursor>
-        </a-camera>
+<div id="view-select">
+    <!-- Branding Logos -->
+    <div style="display:flex;align-items:center;justify-content:center;gap:15px;margin-bottom:10px;">
+        <img src="advaya_fm_logo.png" style="height:60px;object-fit:contain;" alt="Advaya FM">
+        <img src="fm_naipunya_logo.jpg" style="height:60px;object-fit:contain;border-radius:50%;" alt="FM NaipuNya">
+    </div>
+    <div class="persona-center">
+        <div style="width:70px;height:70px;border-radius:50%;overflow:hidden;border:3px solid var(--accent);margin:0 auto;box-shadow:0 0 20px rgba(255,204,0,0.2);">
+            <img src="pragati_face.jpg" style="width:100%;height:100%;object-fit:cover;" alt="Pragati">
+        </div>
+        <div style="font-weight:800;font-size:.9rem;margin-top:6px;">Namaste, Pilot!</div>
+        <div class="welcome-text">I'm Pragati, your training coach. Select a module to begin!</div>
+    </div>
+    <div class="lang-bar" id="lang-bar"></div>
+    <div class="module-grid" id="module-grid"></div>
+</div>
 
-        <!-- Bridge & Workflow Interaction Logic -->
-        <script>
-            // Advaya Engine: Theory -> Practice Transition
-            AFRAME.registerComponent('advaya-workflow', {
-                init: function () {
-                    this.state = 'THEORY';
-                    this.currentPanel = 0;
-                    this.logic = null;
+<div id="view-story" class="phase-view">
+    <div class="story-screen">
+        <img id="story-image" class="story-img pan-active" src="" alt="Training Panel">
+    </div>
+    <div class="story-timer-bar"><div id="story-timer-fill" class="story-timer-fill"></div></div>
+    <div class="story-dialogue"><p id="story-dialogue-text">Loading...</p></div>
+    <div class="story-controls">
+        <button class="story-nav-btn" onclick="NaipunyaEngine.storyPrev()">PREV</button>
+        <span id="story-progress" class="story-progress">1 / 10</span>
+        <button class="story-nav-btn primary" onclick="NaipunyaEngine.storyNext()">NEXT</button>
+    </div>
+</div>
 
-                    fetch('master_config.json')
-                        .then(response => response.json())
-                        .then(data => {
-                            this.manifest = data;
-                            this.loadModule('M4');
-                        });
+<div id="view-theory" class="phase-view">
+    <div class="theory-container" id="theory-content"></div>
+    <div class="theory-footer">
+        <span class="theory-timer" id="theory-timer">10:00</span>
+        <button class="btn-engage" id="theory-next-btn" disabled onclick="NaipunyaEngine.theoryComplete()">PROCEED TO SIMULATION</button>
+    </div>
+</div>
 
-                    this.el.addEventListener('click', () => {
-                        if (this.state === 'THEORY') {
-                            this.nextPanel();
-                        }
-                    });
-                },
+<div id="view-xr" class="phase-view">
+    <div id="xr-scene-container"></div>
+    <div class="xr-hud">
+        <span class="xr-status" id="xr-status">Loading simulation...</span>
+        <span class="xr-task" id="xr-task"></span>
+    </div>
+</div>
 
-                loadModule: function (id) {
-                    this.currentModule = this.manifest.modules.find(m => m.id === id);
-                    this.showComicPanel(0);
-                },
+<div id="view-quiz" class="phase-view">
+    <div class="quiz-container" id="quiz-content"></div>
+    <div class="quiz-footer">
+        <span class="quiz-score" id="quiz-score"></span>
+        <button class="btn-engage" id="quiz-submit-btn" onclick="NaipunyaEngine.submitQuiz()">SUBMIT ANSWERS</button>
+    </div>
+</div>
 
-                showComicPanel: function (index) {
-                    const panelUrl = this.manifest.asset_root + this.currentModule.theory_book[index];
-                    document.querySelector('#comic-panel').setAttribute('src', panelUrl);
+<div id="view-complete">
+    <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:10px;">
+        <img src="advaya_fm_logo.png" style="height:50px;object-fit:contain;" alt="Advaya FM">
+        <img src="fm_naipunya_logo.jpg" style="height:50px;object-fit:contain;border-radius:50%;" alt="FM NaipuNya">
+    </div>
+    <div class="complete-badge">&#x1F3C6;</div>
+    <div class="complete-title" id="complete-title">Module Completed!</div>
+    <div class="complete-msg" id="complete-msg">You have successfully completed this module.</div>
+    <button class="btn-engage" onclick="NaipunyaEngine.goHome()" style="margin-top:10px">BACK TO MODULES</button>
+    <button class="btn-secondary" id="next-module-btn" onclick="NaipunyaEngine.startNextModule()" style="margin-top:10px;display:none">NEXT MODULE</button>
+</div>
 
-                    // Pragati Welcome Dialogue (Spatial Text)
-                    if (index === 0) {
-                        const dialogue = this.manifest.pragati_dialogues[this.currentModule.id + '_' + this.currentModule.name.replace(' ', '_')];
-                        if (dialogue) {
-                            document.querySelector('#ui-text').setAttribute('value', dialogue.welcome);
-                        }
-                    }
-                },
-
-                nextPanel: function () {
-                    this.currentPanel++;
-                    if (this.currentPanel < this.currentModule.theory_book.length) {
-                        this.showComicPanel(this.currentPanel);
-                    } else {
-                        this.startRitual();
-                    }
-                },
-
-                startRitual: function () {
-                    this.state = 'PRACTICE';
-                    document.querySelector('#theory-overlay').setAttribute('visible', 'false');
-                    document.querySelector('#practice-scene').setAttribute('visible', 'true');
-
-                    if (window.AdvayaEngine) {
-                        window.AdvayaEngine.postMessage("THEORY_COMPLETE");
-                    }
-                }
-            });
-
-            AFRAME.registerComponent('inspector-logic', {
-                init: function () {
-                    // "Gaze-Lock" logic - using click as the fuse result
-                    this.el.addEventListener('click', () => {
-                        const id = this.el.getAttribute('id');
-                        const status = (id === "vajra-cab") ? "Vajra Cab SECURE" : "Kit COMPLIANT";
-
-                        if (window.AdvayaEngine) {
-                            window.AdvayaEngine.postMessage(status);
-                        }
-
-                        // Spatial Feedback
-                        const uiText = document.querySelector('#ui-text');
-                        uiText.setAttribute('value', "PRAGATI: " + status + "!");
-                        uiText.setAttribute('color', '#00FF00');
-
-                        this.el.setAttribute('material', 'color', '#00FF00');
-                    });
-                }
-            });
-        </script>
-    </a-scene>
+<script src="theory_content.js"></script>
+<script src="quiz_data.js"></script>
+<script src="xr_m1_grooming.js"></script>
+<script src="xr_m2_digital.js"></script>
+<script src="xr_m3_conduct.js"></script>
+<script src="module_4_vajra_guard.js"></script>
+<script src="xr_m5_defensive1.js"></script>
+<script src="xr_m6_defensive2.js"></script>
+<script src="xr_m7_nightwatch.js"></script>
+<script src="xr_m8_firstaid.js"></script>
+<script src="module_engine.js"></script>
 </body>
-
 </html>

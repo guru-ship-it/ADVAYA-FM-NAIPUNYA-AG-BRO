@@ -1,7 +1,7 @@
 name: app
 description: Advaya FM NaipuNya - Sovereign Engine
 publish_to: 'none'
-version: 1.0.0+1006
+version: 1.0.0+1007
 environment:
   sdk: '>=3.2.0 <4.0.0'
 
@@ -22,3 +22,4 @@ flutter:
   assets:
     - assets/webxr/
     - assets/webxr/assets/
+    - assets/webxr/temp_storybooks/
