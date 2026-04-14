@@ -13,9 +13,9 @@ const MODULE_META = [
 ];
 
 const DIALOGUES = [
-    { module:1, intro:"Namaste bhaiya. Advaya FM Elite family mein aapka swagat hai. Aaj se aap sirf ek driver nahi, ek 'Corporate Pilot' hain.", body_1:"Yaad rakhiye, Broadcom ke executives ke liye punctuality sabse zaroori hai. Jab aap waqt par hote hain, tab aap unka bharosa jeet-te hain.", body_2:"Gaadi ke andar ka mahol hamesha silent aur comfortable hona chahiye. Aapki pehchaan aapke kaam se hai.", closing:"Aapka din shubh ho, Pilot. Hamesha savdhan rahein." },
+    { module:1, intro:"Namaste bhaiya. D Advaya FM Elite family mein aapka swagat hai. Aaj se aap sirf ek driver nahi, ek 'Corporate Pilot' hain.", body_1:"Yaad rakhiye, MNC executives ke liye punctuality sabse zaroori hai. Jab aap waqt par hote hain, tab aap unka bharosa jeet-te hain.", body_2:"Gaadi ke andar ka mahol hamesha silent aur comfortable hona chahiye. Aapki pehchaan aapke kaam se hai.", closing:"Aapka din shubh ho, Pilot. Hamesha savdhan rahein." },
     { module:2, intro:"Namaste. Mobile app dushman nahi, dost hai. Aaj hum 'Gulgul' interface ko samajhenge jo aapki kamayi aur rasta dono asaan banayega.", body_1:"Har trip se pehle app check karein. Sahi rasta chunne se fuel bachega aur passengers waqt par pahunchenge.", body_2:"Technology ka sahi istemal hi ek modern driver ko 'Elite Pilot' banata hai.", closing:"Digital baniye, aage badhiye." },
-    { module:3, intro:"Bhaiya, izzat sabse badi daulat hai. Advaya mein hum sabki dignity ki hifazat karte hain.", body_1:"Professional distance banaye rakhein. Agar aapko kuch bhi galat dikhe, toh 'Plan Hammer' ka istemal karein.", body_2:"Aapka vyavhar hi Broadcom mein humare standards ko define karta hai. Respect is non-negotiable.", closing:"Samman dein, samman payein." },
+    { module:3, intro:"Bhaiya, izzat sabse badi daulat hai. D Advaya FM mein hum sabki dignity ki hifazat karte hain.", body_1:"Professional distance banaye rakhein. Agar aapko kuch bhi galat dikhe, toh 'Plan Hammer' ka istemal karein.", body_2:"Aapka vyavhar hi MNC clients mein humare standards ko define karta hai. Respect is non-negotiable.", closing:"Samman dein, samman payein." },
     { module:4, intro:"Gaadi ki hifazat, khud ki hifazat. Ek Elite Pilot apni machine ko hamesha fit rakhta hai.", body_1:"Rozana sirf 5 minute ka checkup aapko bade khatre se bachayega. Tire pressure aur oil level hamesha check karein.", body_2:"Brake pads aur fluid levels ki Vajra inspection zaroori hai. Aapki machine hi aapki livelihood hai.", closing:"Surakshit chalne ke liye taiyar rahein." },
     { module:5, intro:"Road par hamesha surprises hote hain. Savdhani hi aapka sabse bada insurance hai.", body_1:"Hazard detection ka matlab hai khatre ko pehle se pehchanna. Narrow lanes mein focus double rakhiye.", body_2:"Emergency braking tab asaan hoti hai jab aap control mein hon.", closing:"Soch samajh kar chalein, hamesha bachein." },
     { module:6, intro:"Bangalore traffic ek sabr ka imtihan hai. Lane discipline hi shehar ki raftaar hai.", body_1:"Bina matlab ke horn nahi, bina wajah lane change nahi. Mirrors ka sahi istemal aapko bheed mein alag banata hai.", body_2:"Indicators ka waqt par istemal karein. Dekhiye kaise ek professional traffic mein merge hota hai.", closing:"Sanyam rakhein, safar asaan banayein." },
@@ -42,6 +42,13 @@ const NaipunyaEngine = {
         this.renderLangBar();
         this.renderModuleGrid();
         this.setupVajraShield();
+        // Preload TTS voices (voices load async on some browsers)
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.getVoices();
+            window.speechSynthesis.onvoiceschanged = () => {
+                window.speechSynthesis.getVoices();
+            };
+        }
     },
 
     postToFlutter(msg) {
@@ -197,11 +204,25 @@ const NaipunyaEngine = {
 
     // ============ TTS ============
     speak(text) {
-        window.speechSynthesis.cancel();
-        const u = new SpeechSynthesisUtterance(text);
-        u.lang = this.langMap[this.lang] || 'en-IN';
-        u.rate = 0.95;
-        window.speechSynthesis.speak(u);
+        if (!('speechSynthesis' in window)) return;
+        try {
+            window.speechSynthesis.cancel();
+            const u = new SpeechSynthesisUtterance(text);
+            u.lang = this.langMap[this.lang] || 'en-IN';
+            u.rate = 0.95;
+            u.volume = 1.0;
+            u.pitch = 1.0;
+            // Try to pick a voice matching the language
+            const voices = window.speechSynthesis.getVoices();
+            if (voices && voices.length) {
+                const match = voices.find(v => v.lang.startsWith(u.lang.split('-')[0]));
+                if (match) u.voice = match;
+            }
+            // Small delay helps on some mobile WebViews
+            setTimeout(() => window.speechSynthesis.speak(u), 100);
+        } catch(e) {
+            console.log('TTS error:', e);
+        }
     },
 
     // ============ THEORY PHASE (10 min) ============

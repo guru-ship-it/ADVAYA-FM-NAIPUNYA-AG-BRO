@@ -7,7 +7,7 @@ const SOVEREIGN_MODULES = {
         name: "Foundations",
         scene: "The Digital Mirror (Locker Room)",
         logic: "Visual Integrity Protocol. User must 'grab and fix' 5 errors: wrinkled collar, unpolished shoes, uneven shave, missing badge, messy hair.",
-        script: "A Broadcom employee judges your safety by your sleeve. If you can't manage a collar, how can you manage a vehicle?",
+        script: "An MNC executive judges your safety by your sleeve. If you can't manage a collar, how can you manage a vehicle?",
         duration: "30 mins"
     },
     M2: {
