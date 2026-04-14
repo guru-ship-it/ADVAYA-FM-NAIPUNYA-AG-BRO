@@ -14,11 +14,25 @@
         *{margin:0;padding:0;box-sizing:border-box;}
         body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
 
-        .elite-header{padding:4px 10px;background:rgba(13,17,23,0.95);backdrop-filter:blur(15px);display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.08);position:fixed;top:0;width:100%;z-index:1000;}
+        .elite-header{padding:6px 12px;background:rgba(13,17,23,0.98);backdrop-filter:blur(15px);display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid rgba(255,204,0,0.25);position:fixed;top:0;width:100%;z-index:1000;box-shadow:0 2px 12px rgba(0,0,0,0.5);}
         .logo-text{font-weight:800;font-size:.75rem;letter-spacing:1px;color:#fff;}
-        .header-timer{font-family:monospace;font-size:1rem;color:var(--safety-yellow);font-weight:900;}
-        .header-logo{height:38px;border-radius:50%;object-fit:contain;background:rgba(255,255,255,0.95);padding:2px;}
-        .header-left,.header-right{display:flex;align-items:center;gap:6px;}
+        .header-timer{font-family:monospace;font-size:1rem;color:var(--safety-yellow);font-weight:900;text-shadow:0 0 8px rgba(223,255,0,0.4);}
+        .header-logo{height:46px;border-radius:50%;object-fit:contain;background:#fff;padding:3px;box-shadow:0 2px 10px rgba(255,204,0,0.35);border:1.5px solid rgba(255,204,0,0.5);}
+        .header-left,.header-right{display:flex;align-items:center;gap:8px;}
+        .brand-name{font-weight:800;font-size:.68rem;color:#fff;letter-spacing:.5px;line-height:1;}
+        .brand-name .accent{color:var(--accent);}
+        .brand-name .sub{font-size:.5rem;color:var(--muted);font-weight:600;display:block;margin-top:2px;}
+
+        /* Phase brand strip - shown under header on phase views */
+        .phase-brand-strip{display:flex;align-items:center;justify-content:center;gap:12px;padding:6px 12px;background:linear-gradient(90deg,rgba(255,204,0,0.02),rgba(255,204,0,0.08),rgba(255,204,0,0.02));border-bottom:1px solid rgba(255,204,0,0.15);}
+        .phase-brand-strip img{height:26px;object-fit:contain;border-radius:50%;background:#fff;padding:2px;}
+        .phase-brand-strip .sep{color:rgba(255,204,0,0.4);font-size:.9rem;font-weight:700;}
+        .phase-brand-strip .brand-tag{font-size:.55rem;font-weight:800;color:var(--accent);letter-spacing:1.5px;text-transform:uppercase;}
+
+        /* Bottom-left watermark for persistent brand on XR/story */
+        .brand-watermark{position:fixed;bottom:8px;left:8px;z-index:500;display:flex;align-items:center;gap:6px;background:rgba(13,17,23,0.85);backdrop-filter:blur(8px);border-radius:20px;padding:4px 10px 4px 4px;border:1px solid rgba(255,204,0,0.25);pointer-events:none;}
+        .brand-watermark img{height:22px;width:22px;object-fit:contain;border-radius:50%;background:#fff;padding:1px;}
+        .brand-watermark .wm-text{font-size:.5rem;font-weight:800;color:var(--accent);letter-spacing:1px;}
 
         #view-select{padding:55px 15px 15px;min-height:100vh;display:flex;flex-direction:column;align-items:center;}
         .persona-center{text-align:center;margin-bottom:12px;}
@@ -123,12 +137,21 @@
 <header class="elite-header">
     <div class="header-left">
         <img src="advaya_fm_logo.png" class="header-logo" alt="Advaya FM">
+        <div class="brand-name">ADVAYA <span class="accent">FM</span><span class="sub">अद्वयः</span></div>
     </div>
     <span id="header-timer" class="header-timer"></span>
     <div class="header-right">
+        <div class="brand-name" style="text-align:right;">FM <span class="accent">naipuNya</span><span class="sub">TRAINING</span></div>
         <img src="fm_naipunya_logo.jpg" class="header-logo" alt="FM NaipuNya">
     </div>
 </header>
+
+<!-- Bottom-left persistent brand watermark (visible on all phase views) -->
+<div class="brand-watermark" id="brand-watermark" style="display:none;">
+    <img src="advaya_fm_logo.png" alt="Advaya FM">
+    <img src="fm_naipunya_logo.jpg" alt="FM NaipuNya">
+    <span class="wm-text">ADVAYA FM<sup style="font-size:.5em;">&trade;</sup></span>
+</div>
 
 <!-- Pragati Floating Assistant -->
 <div id="pragati-assistant">
@@ -151,10 +174,14 @@
 <div id="vajra-pulse" onclick="NaipunyaEngine.provePulse()">VAJRA<br>TAP!</div>
 
 <div id="view-select">
-    <!-- Branding Logos -->
-    <div style="display:flex;align-items:center;justify-content:center;gap:15px;margin-bottom:10px;">
-        <img src="advaya_fm_logo.png" style="height:60px;object-fit:contain;" alt="Advaya FM">
-        <img src="fm_naipunya_logo.jpg" style="height:60px;object-fit:contain;border-radius:50%;" alt="FM NaipuNya">
+    <!-- Prominent Branding Section -->
+    <div style="display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:14px;padding-top:12px;">
+        <div style="display:flex;align-items:center;justify-content:center;gap:18px;">
+            <img src="advaya_fm_logo.png" style="height:75px;object-fit:contain;filter:drop-shadow(0 2px 10px rgba(255,204,0,0.3));" alt="Advaya FM">
+            <div style="width:1px;height:55px;background:linear-gradient(transparent,rgba(255,204,0,0.5),transparent);"></div>
+            <img src="fm_naipunya_logo.jpg" style="height:75px;object-fit:contain;border-radius:50%;box-shadow:0 2px 12px rgba(255,204,0,0.25);" alt="FM NaipuNya">
+        </div>
+        <div style="font-size:.55rem;font-weight:800;color:var(--accent);letter-spacing:3px;text-transform:uppercase;margin-top:2px;">&#x2022; Innovating FM Education &#x2022;</div>
     </div>
     <div class="persona-center">
         <div style="width:70px;height:70px;border-radius:50%;overflow:hidden;border:3px solid var(--accent);margin:0 auto;box-shadow:0 0 20px rgba(255,204,0,0.2);">
@@ -165,9 +192,18 @@
     </div>
     <div class="lang-bar" id="lang-bar"></div>
     <div class="module-grid" id="module-grid"></div>
+    <div style="margin-top:25px;padding:12px;text-align:center;font-size:.5rem;color:var(--muted);letter-spacing:1px;">
+        &copy; 2026 ADVAYA FM PVT LTD &bull; ALL TRADEMARKS RESERVED
+    </div>
 </div>
 
 <div id="view-story" class="phase-view">
+    <div class="phase-brand-strip">
+        <img src="advaya_fm_logo.png" alt="Advaya FM">
+        <span class="brand-tag">ADVAYA FM &bull; STORY MODE</span>
+        <span class="sep">|</span>
+        <img src="fm_naipunya_logo.jpg" alt="FM NaipuNya">
+    </div>
     <div class="story-screen">
         <img id="story-image" class="story-img pan-active" src="" alt="Training Panel">
     </div>
@@ -181,6 +217,12 @@
 </div>
 
 <div id="view-theory" class="phase-view">
+    <div class="phase-brand-strip">
+        <img src="advaya_fm_logo.png" alt="Advaya FM">
+        <span class="brand-tag">ADVAYA FM &bull; THEORY MODE</span>
+        <span class="sep">|</span>
+        <img src="fm_naipunya_logo.jpg" alt="FM NaipuNya">
+    </div>
     <div class="theory-container" id="theory-content"></div>
     <div class="theory-footer">
         <span class="theory-timer" id="theory-timer">10:00</span>
@@ -189,6 +231,12 @@
 </div>
 
 <div id="view-xr" class="phase-view">
+    <div class="phase-brand-strip">
+        <img src="advaya_fm_logo.png" alt="Advaya FM">
+        <span class="brand-tag">ADVAYA FM &bull; XR SIMULATION</span>
+        <span class="sep">|</span>
+        <img src="fm_naipunya_logo.jpg" alt="FM NaipuNya">
+    </div>
     <div id="xr-scene-container"></div>
     <div class="xr-hud">
         <span class="xr-status" id="xr-status">Loading simulation...</span>
@@ -197,6 +245,12 @@
 </div>
 
 <div id="view-quiz" class="phase-view">
+    <div class="phase-brand-strip">
+        <img src="advaya_fm_logo.png" alt="Advaya FM">
+        <span class="brand-tag">ADVAYA FM &bull; ASSESSMENT</span>
+        <span class="sep">|</span>
+        <img src="fm_naipunya_logo.jpg" alt="FM NaipuNya">
+    </div>
     <div class="quiz-container" id="quiz-content"></div>
     <div class="quiz-footer">
         <span class="quiz-score" id="quiz-score"></span>
@@ -205,10 +259,12 @@
 </div>
 
 <div id="view-complete">
-    <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:10px;">
-        <img src="advaya_fm_logo.png" style="height:50px;object-fit:contain;" alt="Advaya FM">
-        <img src="fm_naipunya_logo.jpg" style="height:50px;object-fit:contain;border-radius:50%;" alt="FM NaipuNya">
+    <div style="display:flex;align-items:center;justify-content:center;gap:18px;margin-bottom:15px;">
+        <img src="advaya_fm_logo.png" style="height:65px;object-fit:contain;filter:drop-shadow(0 2px 8px rgba(63,185,80,0.4));" alt="Advaya FM">
+        <div style="width:1px;height:50px;background:linear-gradient(transparent,var(--success),transparent);"></div>
+        <img src="fm_naipunya_logo.jpg" style="height:65px;object-fit:contain;border-radius:50%;box-shadow:0 2px 12px rgba(63,185,80,0.3);" alt="FM NaipuNya">
     </div>
+    <div style="font-size:.55rem;font-weight:800;color:var(--success);letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;">CERTIFIED BY ADVAYA FM</div>
     <div class="complete-badge">&#x1F3C6;</div>
     <div class="complete-title" id="complete-title">Module Completed!</div>
     <div class="complete-msg" id="complete-msg">You have successfully completed this module.</div>

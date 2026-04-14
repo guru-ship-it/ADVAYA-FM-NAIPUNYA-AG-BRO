@@ -23,7 +23,7 @@ if (flutterVersionName == null) {
 }
 
 android {
-    namespace "com.advaya.fm.naipunya"
+    namespace "in.advayafm.training"
     compileSdkVersion 35
     ndkVersion flutter.ndkVersion
 
@@ -41,10 +41,10 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.advaya.fm.naipunya"
+        applicationId "in.advayafm.training"
         minSdkVersion 24
         targetSdkVersion 35
-        versionCode 1006
+        versionCode 1
         versionName flutterVersionName
     }
 

@@ -27,3 +27,18 @@ temp_proj/
 symbols/
 app/windows_disabled/
 
+# Android signing keys (NEVER commit)
+*.jks
+*.keystore
+key.properties
+
+# Flutter/Dart build
+app/build/
+app/.dart_tool/
+app/.flutter-plugins
+app/.flutter-plugins-dependencies
+app/android/.gradle/
+app/android/app/.cxx/
+app/android/captures/
+app/android/local.properties
+

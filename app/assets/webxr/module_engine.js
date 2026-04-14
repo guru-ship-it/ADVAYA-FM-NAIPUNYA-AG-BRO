@@ -509,6 +509,16 @@ const NaipunyaEngine = {
         } else {
             assistant.style.display = 'flex';
         }
+
+        // Brand watermark - show on story and XR (immersive phases)
+        const watermark = document.getElementById('brand-watermark');
+        if (watermark) {
+            if (phase === 'STORY' || phase === 'XR') {
+                watermark.style.display = 'flex';
+            } else {
+                watermark.style.display = 'none';
+            }
+        }
     },
 
     // ============ VAJRA PULSE (Liveness) ============

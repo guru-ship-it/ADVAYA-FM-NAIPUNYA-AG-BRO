@@ -1,4 +1,4 @@
-package com.advaya.fm.naipunya
+package `in`.advayafm.training
 
 import io.flutter.embedding.android.FlutterActivity
 
