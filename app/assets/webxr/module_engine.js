@@ -49,6 +49,141 @@ const NaipunyaEngine = {
                 window.speechSynthesis.getVoices();
             };
         }
+        // Check authentication
+        this.checkAuth();
+    },
+
+    // ============ AUTHENTICATION ============
+    authEndpoint: 'https://www.advayafm.com/api/auth',
+    currentPhone: null,
+    currentToken: null,
+
+    checkAuth() {
+        try {
+            const token = localStorage.getItem('advaya_auth_token');
+            const phone = localStorage.getItem('advaya_auth_phone');
+            if (token && phone) {
+                this.currentToken = token;
+                this.currentPhone = phone;
+                this.showMainApp();
+                return;
+            }
+        } catch(e) { console.warn('localStorage unavailable', e); }
+        this.showLogin();
+    },
+
+    showLogin() {
+        document.getElementById('view-login').style.display = 'flex';
+        document.getElementById('view-select').style.display = 'none';
+        // Hide other views
+        ['view-story','view-theory','view-xr','view-quiz','view-complete'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.style.display = 'none';
+        });
+        // Hide pragati on login
+        const assistant = document.getElementById('pragati-assistant');
+        if (assistant) assistant.style.display = 'none';
+    },
+
+    showMainApp() {
+        document.getElementById('view-login').style.display = 'none';
+        document.getElementById('view-select').style.display = 'flex';
+    },
+
+    async requestOtp() {
+        const input = document.getElementById('login-phone-input');
+        const msg = document.getElementById('login-phone-msg');
+        const phone = (input.value || '').replace(/\D/g,'');
+        if (phone.length !== 10) {
+            msg.textContent = 'Please enter a valid 10-digit Indian mobile number';
+            return;
+        }
+        msg.style.color = 'var(--muted)';
+        msg.textContent = 'Sending OTP...';
+        try {
+            const res = await fetch(this.authEndpoint + '/send-otp', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ phone: phone }),
+            });
+            const data = await res.json();
+            if (!res.ok) throw new Error(data.error || 'Failed to send OTP');
+            // Move to OTP step
+            this.currentPhone = phone;
+            document.getElementById('login-phone-step').style.display = 'none';
+            document.getElementById('login-otp-step').style.display = 'block';
+            document.getElementById('login-otp-target').textContent = 'Sent to +91 ' + phone.slice(0,5) + ' ' + phone.slice(5);
+            const otpMsg = document.getElementById('login-otp-msg');
+            otpMsg.style.color = 'var(--success)';
+            otpMsg.textContent = data.dev_otp ? ('DEV OTP: ' + data.dev_otp) : 'OTP sent successfully';
+            document.getElementById('login-otp-input').focus();
+            // Disable resend for 30 sec
+            const btn = document.getElementById('login-resend-btn');
+            btn.disabled = true; btn.style.opacity = '0.4';
+            let s = 30;
+            btn.textContent = 'Resend in ' + s + 's';
+            const t = setInterval(() => {
+                s--;
+                btn.textContent = s > 0 ? ('Resend in ' + s + 's') : 'Resend OTP';
+                if (s <= 0) { clearInterval(t); btn.disabled = false; btn.style.opacity = '1'; }
+            }, 1000);
+        } catch(e) {
+            msg.style.color = 'var(--danger)';
+            msg.textContent = e.message || 'Could not send OTP. Try again.';
+        }
+    },
+
+    async verifyOtp() {
+        const otpInput = document.getElementById('login-otp-input');
+        const msg = document.getElementById('login-otp-msg');
+        const otp = (otpInput.value || '').replace(/\D/g,'');
+        if (otp.length !== 6) {
+            msg.style.color = 'var(--danger)';
+            msg.textContent = 'Please enter the 6-digit OTP';
+            return;
+        }
+        msg.style.color = 'var(--muted)';
+        msg.textContent = 'Verifying...';
+        try {
+            const res = await fetch(this.authEndpoint + '/verify-otp', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ phone: this.currentPhone, otp: otp }),
+            });
+            const data = await res.json();
+            if (!res.ok) throw new Error(data.error || 'Verification failed');
+            // Save session
+            try {
+                localStorage.setItem('advaya_auth_token', data.token);
+                localStorage.setItem('advaya_auth_phone', data.phone);
+            } catch(e) {}
+            this.currentToken = data.token;
+            // Notify Flutter shell
+            this.postToFlutter('AUTH_SUCCESS:' + data.phone);
+            // Enter app
+            this.showMainApp();
+        } catch(e) {
+            msg.style.color = 'var(--danger)';
+            msg.textContent = e.message || 'Invalid OTP';
+        }
+    },
+
+    changePhone() {
+        document.getElementById('login-otp-step').style.display = 'none';
+        document.getElementById('login-phone-step').style.display = 'block';
+        document.getElementById('login-otp-input').value = '';
+        document.getElementById('login-phone-msg').textContent = '';
+        document.getElementById('login-otp-msg').textContent = '';
+    },
+
+    logout() {
+        try {
+            localStorage.removeItem('advaya_auth_token');
+            localStorage.removeItem('advaya_auth_phone');
+        } catch(e) {}
+        this.currentPhone = null;
+        this.currentToken = null;
+        this.showLogin();
     },
 
     postToFlutter(msg) {
@@ -518,6 +653,114 @@ const NaipunyaEngine = {
         this.pragatiBubbleVisible = !this.pragatiBubbleVisible;
         const bubble = document.getElementById('pragati-bubble');
         if (bubble) bubble.style.display = this.pragatiBubbleVisible ? 'block' : 'none';
+    },
+
+    // ============ PRAGATI AI CHAT (powered by Claude via Bedrock) ============
+    pragatiChatHistory: [],
+    pragatiChatLang: 'English',
+    pragatiChatEndpoint: 'https://www.advayafm.com/api/pragati/chat',
+
+    openPragatiChat() {
+        const panel = document.getElementById('pragati-chat-panel');
+        if (!panel) return;
+        panel.style.display = 'flex';
+        // Sync chat language with current app language
+        const langSel = document.getElementById('pragati-chat-lang');
+        if (langSel) {
+            langSel.value = this.lang || 'English';
+            this.pragatiChatLang = this.lang || 'English';
+        }
+        // Show welcome message if first open
+        if (this.pragatiChatHistory.length === 0) {
+            this.appendPragatiMessage('assistant', this.getPragatiWelcome(this.pragatiChatLang));
+        }
+    },
+
+    closePragatiChat() {
+        const panel = document.getElementById('pragati-chat-panel');
+        if (panel) panel.style.display = 'none';
+    },
+
+    setPragatiChatLang(lang) {
+        this.pragatiChatLang = lang;
+        // Reset and show new welcome
+        const msgs = document.getElementById('pragati-chat-messages');
+        if (msgs) msgs.innerHTML = '';
+        this.pragatiChatHistory = [];
+        this.appendPragatiMessage('assistant', this.getPragatiWelcome(lang));
+    },
+
+    getPragatiWelcome(lang) {
+        if (lang === 'Hindi') return "नमस्ते! मैं प्रगति हूँ, आपकी AI कोच। training, modules, या किसी भी सवाल के बारे में पूछिए।";
+        if (lang === 'Telugu') return "నమస్తే! నేను ప్రగతి, మీ AI కోచ్. training, modules గురించి ఏదైనా అడగండి.";
+        return "Namaste! I'm Pragati, your AI coach. Ask me anything about your training modules, the company, or how to use the app.";
+    },
+
+    appendPragatiMessage(role, text) {
+        const msgs = document.getElementById('pragati-chat-messages');
+        if (!msgs) return;
+        const isUser = role === 'user';
+        const bubble = document.createElement('div');
+        bubble.style.cssText = 'max-width:85%;padding:8px 12px;border-radius:14px;font-size:.75rem;line-height:1.5;align-self:' + (isUser ? 'flex-end' : 'flex-start') + ';' + (isUser ? 'background:#0A1628;color:#fff;' : 'background:#fff;color:#0A1628;border:1px solid #E2E8F0;');
+        bubble.textContent = text;
+        msgs.appendChild(bubble);
+        msgs.scrollTop = msgs.scrollHeight;
+    },
+
+    appendPragatiTyping() {
+        const msgs = document.getElementById('pragati-chat-messages');
+        if (!msgs) return;
+        const dots = document.createElement('div');
+        dots.id = 'pragati-typing';
+        dots.style.cssText = 'align-self:flex-start;background:#fff;border:1px solid #E2E8F0;padding:8px 14px;border-radius:14px;font-size:.85rem;color:#D4AF37;';
+        dots.textContent = '. . .';
+        msgs.appendChild(dots);
+        msgs.scrollTop = msgs.scrollHeight;
+    },
+
+    removePragatiTyping() {
+        const dots = document.getElementById('pragati-typing');
+        if (dots) dots.remove();
+    },
+
+    async sendPragatiMessage() {
+        const input = document.getElementById('pragati-chat-input');
+        if (!input) return;
+        const text = input.value.trim();
+        if (!text) return;
+        input.value = '';
+
+        // Show user message
+        this.appendPragatiMessage('user', text);
+        this.pragatiChatHistory.push({ role: 'user', content: text });
+
+        // Show typing indicator
+        this.appendPragatiTyping();
+
+        try {
+            const res = await fetch(this.pragatiChatEndpoint, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    message: text,
+                    history: this.pragatiChatHistory.slice(-10),
+                    language: this.pragatiChatLang,
+                }),
+            });
+            this.removePragatiTyping();
+            if (!res.ok) throw new Error('API error');
+            const data = await res.json();
+            this.appendPragatiMessage('assistant', data.reply);
+            this.pragatiChatHistory.push({ role: 'assistant', content: data.reply });
+        } catch (err) {
+            this.removePragatiTyping();
+            const fallback = this.pragatiChatLang === 'Hindi'
+                ? 'मुझे माफ़ कीजिये, अभी connection समस्या है। कृपया बाद में कोशिश करें।'
+                : this.pragatiChatLang === 'Telugu'
+                    ? 'క్షమించండి, ఇప్పుడు connection సమస్య ఉంది. దయచేసి తర్వాత ప్రయత్నించండి.'
+                    : "Sorry, I'm having a connection issue. Please try again in a moment.";
+            this.appendPragatiMessage('assistant', fallback);
+        }
     },
 
     showPragatiForPhase(phase) {

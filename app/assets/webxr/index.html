@@ -159,10 +159,36 @@
     <div class="pragati-bubble" id="pragati-bubble">
         <div class="pragati-name">PRAGATI DIDI</div>
         <p id="pragati-msg">Namaste, Pilot! Main Pragati hoon, aapki personal career coach. Module select karein aur training shuru karein!</p>
+        <button onclick="NaipunyaEngine.openPragatiChat()" style="margin-top:6px;background:var(--accent);color:#000;border:none;border-radius:14px;padding:4px 10px;font-size:.55rem;font-weight:800;cursor:pointer;letter-spacing:1px;font-family:'Outfit',sans-serif;">ASK PRAGATI &raquo;</button>
     </div>
     <div class="pragati-avatar-wrap" onclick="NaipunyaEngine.togglePragati()">
         <img class="pragati-avatar" id="pragati-avatar" src="pragati_face.jpg" alt="Pragati">
         <span class="pragati-status"></span>
+    </div>
+</div>
+
+<!-- Pragati Full Chat Panel -->
+<div id="pragati-chat-panel" style="display:none;position:fixed;bottom:0;right:0;width:100%;max-width:380px;height:560px;max-height:90vh;background:#fff;border:1px solid var(--border);border-radius:16px 16px 0 0;box-shadow:0 -4px 30px rgba(30,58,95,0.25);z-index:9100;flex-direction:column;overflow:hidden;font-family:'Outfit',sans-serif;">
+    <div style="background:linear-gradient(135deg,#0A1628,#1E3A5F);color:#fff;padding:12px 14px;display:flex;align-items:center;gap:10px;">
+        <img src="pragati_face.jpg" style="width:40px;height:40px;border-radius:50%;border:2px solid var(--accent);object-fit:cover;">
+        <div style="flex:1;">
+            <div style="font-weight:800;font-size:.85rem;">Pragati <span style="color:var(--accent);">Didi</span></div>
+            <div style="font-size:.55rem;color:#94A3B8;">AI Coach &middot; Online</div>
+        </div>
+        <select id="pragati-chat-lang" onchange="NaipunyaEngine.setPragatiChatLang(this.value)" style="background:rgba(0,0,0,0.3);color:#fff;border:1px solid #475569;border-radius:6px;padding:4px 6px;font-size:.6rem;font-weight:700;">
+            <option value="English">EN</option>
+            <option value="Hindi">HI</option>
+            <option value="Telugu">TE</option>
+        </select>
+        <button onclick="NaipunyaEngine.closePragatiChat()" style="background:transparent;border:none;color:#fff;font-size:1.2rem;cursor:pointer;padding:0 4px;">&times;</button>
+    </div>
+    <div id="pragati-chat-messages" style="flex:1;overflow-y:auto;padding:12px;background:#F8F6F0;display:flex;flex-direction:column;gap:8px;"></div>
+    <div style="padding:8px;background:#fff;border-top:1px solid var(--border);">
+        <form onsubmit="event.preventDefault();NaipunyaEngine.sendPragatiMessage();" style="display:flex;gap:6px;">
+            <input id="pragati-chat-input" type="text" placeholder="Ask Pragati..." style="flex:1;padding:8px 12px;border:1px solid var(--border);border-radius:20px;outline:none;font-size:.75rem;background:#F1F5F9;font-family:'Outfit',sans-serif;">
+            <button type="submit" style="background:var(--accent);color:#000;border:none;width:36px;height:36px;border-radius:50%;cursor:pointer;font-weight:800;font-size:1rem;">&#x27A4;</button>
+        </form>
+        <p style="margin:4px 0 0;text-align:center;font-size:.5rem;color:var(--muted);">Powered by Claude AI &middot; D Advaya FM</p>
     </div>
 </div>
 
@@ -173,6 +199,42 @@
 </div>
 
 <div id="vajra-pulse" onclick="NaipunyaEngine.provePulse()">VAJRA<br>TAP!</div>
+
+<!-- Login View (shown first if user not authenticated) -->
+<div id="view-login" style="display:none;padding:62px 20px 20px;min-height:100vh;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(180deg,var(--bg) 0%,#FFF 100%);">
+    <div style="display:flex;align-items:center;justify-content:center;gap:18px;margin-bottom:20px;">
+        <img src="advaya_fm_logo.png" style="height:80px;object-fit:contain;" alt="D Advaya FM">
+        <img src="fm_naipunya_logo.jpg" style="height:80px;object-fit:contain;border-radius:50%;" alt="FM NaipuNya">
+    </div>
+    <h2 style="font-weight:800;font-size:1.2rem;color:var(--text);margin-bottom:6px;text-align:center;">Welcome to FM NaipuNya</h2>
+    <p style="color:var(--muted);font-size:.75rem;text-align:center;margin-bottom:24px;">Sign in with your mobile number</p>
+
+    <!-- Phone input step -->
+    <div id="login-phone-step" style="width:100%;max-width:340px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:20px;box-shadow:0 4px 14px rgba(30,58,95,0.08);">
+        <label style="display:block;font-size:.65rem;font-weight:800;color:var(--muted);letter-spacing:1.5px;margin-bottom:8px;">MOBILE NUMBER</label>
+        <div style="display:flex;align-items:center;border:1px solid var(--border);border-radius:8px;overflow:hidden;">
+            <span style="padding:10px 12px;background:#F1F5F9;color:var(--text);font-weight:700;font-size:.85rem;border-right:1px solid var(--border);">+91</span>
+            <input id="login-phone-input" type="tel" maxlength="10" placeholder="98765 43210" inputmode="numeric" style="flex:1;padding:10px 12px;border:none;outline:none;font-size:.95rem;color:var(--text);font-family:'Outfit',sans-serif;">
+        </div>
+        <button onclick="NaipunyaEngine.requestOtp()" style="width:100%;margin-top:14px;background:var(--accent);color:#000;border:none;border-radius:24px;padding:12px;font-weight:800;font-size:.85rem;letter-spacing:1px;cursor:pointer;font-family:'Outfit',sans-serif;">SEND OTP</button>
+        <p id="login-phone-msg" style="margin-top:8px;font-size:.65rem;color:var(--danger);text-align:center;min-height:1em;"></p>
+    </div>
+
+    <!-- OTP verification step -->
+    <div id="login-otp-step" style="display:none;width:100%;max-width:340px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:20px;box-shadow:0 4px 14px rgba(30,58,95,0.08);">
+        <label style="display:block;font-size:.65rem;font-weight:800;color:var(--muted);letter-spacing:1.5px;margin-bottom:4px;">ENTER OTP</label>
+        <p id="login-otp-target" style="font-size:.7rem;color:var(--text);margin-bottom:10px;">Sent to +91 XXXXX XXXXX</p>
+        <input id="login-otp-input" type="tel" maxlength="6" placeholder="6-digit code" inputmode="numeric" style="width:100%;padding:12px;border:1px solid var(--border);border-radius:8px;outline:none;text-align:center;font-size:1.3rem;letter-spacing:6px;font-weight:800;color:var(--text);font-family:'Outfit',sans-serif;">
+        <button onclick="NaipunyaEngine.verifyOtp()" style="width:100%;margin-top:12px;background:var(--accent);color:#000;border:none;border-radius:24px;padding:12px;font-weight:800;font-size:.85rem;letter-spacing:1px;cursor:pointer;font-family:'Outfit',sans-serif;">VERIFY &amp; ENTER</button>
+        <div style="display:flex;justify-content:space-between;margin-top:10px;">
+            <button onclick="NaipunyaEngine.changePhone()" style="background:none;border:none;color:var(--primary);font-size:.65rem;font-weight:700;cursor:pointer;text-decoration:underline;font-family:'Outfit',sans-serif;">Change number</button>
+            <button id="login-resend-btn" onclick="NaipunyaEngine.requestOtp()" style="background:none;border:none;color:var(--primary);font-size:.65rem;font-weight:700;cursor:pointer;text-decoration:underline;font-family:'Outfit',sans-serif;">Resend OTP</button>
+        </div>
+        <p id="login-otp-msg" style="margin-top:8px;font-size:.65rem;color:var(--danger);text-align:center;min-height:1em;"></p>
+    </div>
+
+    <p style="margin-top:20px;font-size:.6rem;color:var(--muted);text-align:center;max-width:300px;line-height:1.5;">By signing in, you agree to D Advaya FM's <a href="https://www.advayafm.com/terms" style="color:var(--primary);text-decoration:underline;">Terms</a> &amp; <a href="https://www.advayafm.com/privacy-policy" style="color:var(--primary);text-decoration:underline;">Privacy Policy</a>.</p>
+</div>
 
 <div id="view-select">
     <!-- Prominent Branding Section -->
